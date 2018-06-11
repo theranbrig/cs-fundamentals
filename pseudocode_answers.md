@@ -75,7 +75,7 @@ const name = 'ellen'
 function findName (array, name) {
   for (let i = 0; i < array.length; i++) {
     if (name === array[i]) {
-      return `Name found at position ${arr.indexOf(name)} in the array`
+      return `Name found at position ${array.indexOf(name)} in the array`
     }
   } return 'Name not found'
 }
