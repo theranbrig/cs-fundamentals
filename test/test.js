@@ -152,3 +152,79 @@ ht.print();
 console.log(ht.lookup('Jeremy'));
 console.log(ht.lookup('Theran'));
 console.log(ht.lookup('Paul'));
+
+// a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+// b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+// c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+// d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+// e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+// f) If Patrick wants to leave the line, how would you delete him from the array?
+
+let rideLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+const Line = function () {
+  this.joinLine = function (line, name) {
+    line.push(name)
+    return `The new line order is ${line.join(', ')}`;
+  }
+
+  this.findPerson =function (line, name) {
+    for (var i = 0; i < line.length; i++) {
+      if(line[i] === name) {
+        return `${name} is in position ${line.indexOf(name)} in the line.`
+      } 
+    } return `${name} is not in the line.`
+  }
+
+  this.cutLine = function (line, holder, cutter) {
+    line.splice(line.indexOf(holder) + 1, 0, cutter);
+    return `The new line order is ${line.join(', ')}`;
+  }
+
+  this.leave = function (line, name) {
+    line.splice(line.indexOf(name), 1);
+    return `The new line order is ${line.join(', ')}`
+  }
+}
+
+let blackWidowLine = new Line()
+
+console.log(blackWidowLine.joinLine(rideLine, 'Mary'));
+console.log(blackWidowLine.findPerson(rideLine, 'Josh'));
+console.log(blackWidowLine.cutLine(rideLine, 'Josh', 'Mike'));
+console.log(blackWidowLine.leave(rideLine, 'Josh'));
+
+
+let sprite = 1;
+
+
+const Inventory = function(soda) {
+
+  this.checkInventory = function(inventory) {
+    return `There are ${inventory} cans of ${soda}`
+  }
+
+  this.customerOrder = function (inventory, orderNumber) {
+    if (inventory >= orderNumber) {
+      return `There are ${inventory -= orderNumber} cans of ${soda}`;
+    } else {
+      return `Sorry, we are do not have enough ${soda}`
+    }
+  }
+
+  this.checkOrderProduct = function (inventory) {
+    const reorderNumber = 8;
+    if (inventory <= 3) {
+      return `There are ${inventory += reorderNumber} cans of ${soda}`;
+    } else {
+      return checkInventory(inventory)
+    }
+  }
+  
+}
+
+let spriteInventory = new Inventory('Sprite');
+
+console.log(spriteInventory.checkInventory(sprite));
+console.log(spriteInventory.customerOrder(sprite, 8));
+console.log(spriteInventory.checkOrderProduct(sprite));
