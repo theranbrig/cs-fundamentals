@@ -195,36 +195,69 @@ console.log(blackWidowLine.cutLine(rideLine, 'Josh', 'Mike'));
 console.log(blackWidowLine.leave(rideLine, 'Josh'));
 
 
-let sprite = 1;
 
-
-const Inventory = function(soda) {
+const newInventory = function() {
 
   this.checkInventory = function(inventory) {
-    return `There are ${inventory} cans of ${soda}`
+    inventory.forEach(product => {
+      console.log(`${product.type}: ${product.quantity}`);
+    });
   }
 
-  this.customerOrder = function (inventory, orderNumber) {
-    if (inventory >= orderNumber) {
-      return `There are ${inventory -= orderNumber} cans of ${soda}`;
-    } else {
-      return `Sorry, we are do not have enough ${soda}`
-    }
+  this.customerOrder = function (inventory, productOrdered, numberOrdered) {
+    for (let i = 0; i < inventory.length; i++) {
+      if(productOrdered === inventory[i].type && numberOrdered <= inventory[i].quantity) {
+        console.log(`Order = ${inventory[i].type}: ${numberOrdered}`)
+        inventory[i].quantity -= numberOrdered
+      } else if (productOrdered === inventory[i].type && numberOrdered > inventory[i].quantity) {
+        console.log(`Invalid Order: Order = ${inventory[i].type}: ${numberOrdered}, Inventory: ${inventory[i].type}: ${inventory[i].quantity}`)
+      } 
+    } this.checkInventory(inventory)
   }
 
-  this.checkOrderProduct = function (inventory) {
-    const reorderNumber = 8;
-    if (inventory <= 3) {
-      return `There are ${inventory += reorderNumber} cans of ${soda}`;
-    } else {
-      return checkInventory(inventory)
-    }
-  }
-  
+  this.checkProducts = function (inventory) {
+    let productOrder = 5;
+    let newTotal = 0
+    inventory.forEach(product => {
+      if (product.quantity <= 2) {
+        newTotal = product.quantity + productOrder
+        console.log(`Order for ${product.type}. Current Inventory: ${product.quantity}, Ordered: ${productOrder}, New Inventory: ${newTotal}`);
+        product.quantity += productOrder
+      } else {
+        console.log(`No order for ${product.type}. Current Inventory: ${product.quantity}`)
+      }
+    }); this.checkInventory(inventory)
+  } 
 }
 
-let spriteInventory = new Inventory('Sprite');
+let storeInventory = [
+  {
+    type: 'cola',
+    quantity: 5
+  },
+  {
+    type: 'lemon lime',
+    quantity: 5
+  },
+  {
+    type: 'ginger ale',
+    quantity: 5
+  },
+  {
+    type: 'root beer',
+    quantity: 5
+  },
+  {
+    type: 'orange',
+    quantity: 5
+  }
+]
 
-console.log(spriteInventory.checkInventory(sprite));
-console.log(spriteInventory.customerOrder(sprite, 8));
-console.log(spriteInventory.checkOrderProduct(sprite));
+let tradersInventory = new newInventory();
+
+tradersInventory.checkInventory(storeInventory)
+tradersInventory.customerOrder(storeInventory, 'cola', 4)
+tradersInventory.customerOrder(storeInventory, 'orange', 2)
+tradersInventory.customerOrder(storeInventory, 'root beer', 3)
+tradersInventory.customerOrder(storeInventory, 'root beer', 3)
+tradersInventory.checkProducts(storeInventory)
