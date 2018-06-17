@@ -78,80 +78,80 @@ console.log(findAnagram("spar", "rasp"))
 
 // Hash Functions
 
-const hash = (string, max) => {
-  let hash = 0;
-  for (let i = 0; i < string.length; i++) {
-    hash += string.charCodeAt(i);
-  }
-  return hash % max;
-}
+// const hash = (string, max) => {
+//   let hash = 0;
+//   for (let i = 0; i < string.length; i++) {
+//     hash += string.charCodeAt(i);
+//   }
+//   return hash % max;
+// }
 
-const HashTable = function () {
-  let storage = [];
-  const storageLimit = 4;
+// const HashTable = function () {
+//   let storage = [];
+//   const storageLimit = 4;
 
-  this.print = function() {
-    console.log(storage);
-  };
+//   this.print = function() {
+//     console.log(storage);
+//   };
 
-  this.add = function(key, value) {
-    let index = hash(key, storageLimit)
-    if (storage[index] === undefined) {
-      storage[index] = [
-        [key, value]
-      ];
-    } else {
-      let inserted = false;
-      for (let i = 0; i < storage[index].length; i++) {
-        if (storage[index][i][0] === key) {
-          storage[index][i][1] === value;
-          inserted = true;
-        }
-      }
-      if (inserted === false) {
-        storage[index].push([key, value])
-      }
-    }
-  };
+//   this.add = function(key, value) {
+//     let index = hash(key, storageLimit)
+//     if (storage[index] === undefined) {
+//       storage[index] = [
+//         [key, value]
+//       ];
+//     } else {
+//       let inserted = false;
+//       for (let i = 0; i < storage[index].length; i++) {
+//         if (storage[index][i][0] === key) {
+//           storage[index][i][1] === value;
+//           inserted = true;
+//         }
+//       }
+//       if (inserted === false) {
+//         storage[index].push([key, value])
+//       }
+//     }
+//   };
 
-  this.remove = function(key) {
-    let index = hash(key, storageLimit)
-    if (storage[index].length === 1 && storage[index][0][0] === key) {
-      delete storage[index];
-    } else {
-      for (let i = 0; i < storage[index]; i++) {
-        if(storage[index][i][0] === key) {
-          delete storage[index][i];
-        }
-      }
-    }
-  };
+//   this.remove = function(key) {
+//     let index = hash(key, storageLimit)
+//     if (storage[index].length === 1 && storage[index][0][0] === key) {
+//       delete storage[index];
+//     } else {
+//       for (let i = 0; i < storage[index]; i++) {
+//         if(storage[index][i][0] === key) {
+//           delete storage[index][i];
+//         }
+//       }
+//     }
+//   };
 
-  this.lookup = function(key) {
-  let index = hash(key, storageLimit)
-    if (storage[index] === undefined) {
-      return undefined;
-    } else {
-      for (let i = 0; i < storage[index].length; i++) {
-        if(storage[index][i][0] === key) {
-          return storage[index][i][1];
-        }
-      }
-    }
-  };
-}
+//   this.lookup = function(key) {
+//   let index = hash(key, storageLimit)
+//     if (storage[index] === undefined) {
+//       return undefined;
+//     } else {
+//       for (let i = 0; i < storage[index].length; i++) {
+//         if(storage[index][i][0] === key) {
+//           return storage[index][i][1];
+//         }
+//       }
+//     }
+//   };
+// }
 
-let ht = new HashTable();
+// let ht = new HashTable();
 
-ht.add('Theran', 9876543);
-ht.add('Michael', 7654321);
-ht.add('Ryan', 5643219);
-ht.add('Paul', 8765432);
-ht.add('Jeremy', 1234567)
-ht.print();
-console.log(ht.lookup('Jeremy'));
-console.log(ht.lookup('Theran'));
-console.log(ht.lookup('Paul'));
+// ht.add('Theran', 9876543);
+// ht.add('Michael', 7654321);
+// ht.add('Ryan', 5643219);
+// ht.add('Paul', 8765432);
+// ht.add('Jeremy', 1234567)
+// ht.print();
+// console.log(ht.lookup('Jeremy'));
+// console.log(ht.lookup('Theran'));
+// console.log(ht.lookup('Paul'));
 
 // a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
 // b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
@@ -261,3 +261,142 @@ tradersInventory.customerOrder(storeInventory, 'orange', 2)
 tradersInventory.customerOrder(storeInventory, 'root beer', 3)
 tradersInventory.customerOrder(storeInventory, 'root beer', 3)
 tradersInventory.checkProducts(storeInventory)
+
+
+// Exercises
+
+
+// Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+// Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+// Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+
+const hash = (string, max) => {
+  let hash = 0;
+  for (let i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+const HashData = function() {
+  let database = [];
+  const databaseLimit = 10;
+
+  this.print = function() {
+    console.log(database);
+  }
+
+  this.addPerson = function(name, address, phoneNumber) {
+    let index = hash(phoneNumber, databaseLimit);
+    if (database[index] === undefined) {
+      database[index] = [[
+          name,
+          address,
+          phoneNumber
+      ]]
+    } else {
+      let inserted = false
+      for (let i = 0; i < database[index].length; i++) {
+        if (database[index][i][2] === phoneNumber) {
+          inserted = true
+        }
+      }
+      if(inserted === false) {
+        database[index].push(
+          [
+            name,
+            address,
+            phoneNumber
+          ]
+        );
+      }
+    }
+  }
+}
+
+let salesHash = new HashData();
+
+salesHash.addPerson('Theran', 'Lawnview Lane', '8675309')
+salesHash.addPerson('Bill', 'Main Street', '8675305')
+salesHash.addPerson('James', '2nd Street', '7364825')
+salesHash.addPerson('Steve', '3rd Street', '3892503')
+salesHash.addPerson('Cooper', '4th Street', '2050329')
+salesHash.addPerson('Dennis', '7th Street', '1039253')
+salesHash.addPerson('Paul', '8th Street', '3049640')
+salesHash.addPerson('Ryan', '9th Street', '0304920')
+salesHash.addPerson('Ryan', '9th Street', '0304920') 
+salesHash.print();
+
+
+
+
+
+
+
+
+// const HashTable = function () {
+//   let storage = [];
+//   const storageLimit = 10;
+
+//   this.print = function() {
+//     console.log(storage);
+//   };
+
+//   this.add = function(key, value) {
+//     let index = hash(key, storageLimit)
+//     if (storage[index] === undefined) {
+//       storage[index] = [
+//         [key, value]
+//       ];
+//     } else {
+//       let inserted = false;
+//       for (let i = 0; i < storage[index].length; i++) {
+//         if (storage[index][i][0] === key) {
+//           storage[index][i][1] = value;
+//           inserted = true;
+//         }
+//       }
+//       if (inserted === false) {
+//         storage[index].push([key, value])
+//       }
+//     }
+//   };
+
+//   this.remove = function(key) {
+//     let index = hash(key, storageLimit)
+//     if (storage[index].length === 1 && storage[index][0][0] === key) {
+//       delete storage[index];
+//     } else {
+//       for (let i = 0; i < storage[index]; i++) {
+//         if(storage[index][i][0] === key) {
+//           delete storage[index][i];
+//         }
+//       }
+//     }
+//   };
+
+//   this.lookup = function(key) {
+//   let index = hash(key, storageLimit)
+//     if (storage[index] === undefined) {
+//       return undefined;
+//     } else {
+//       for (let i = 0; i < storage[index].length; i++) {
+//         if(storage[index][i][0] === key) {
+//           return storage[index][i][1];
+//         }
+//       }
+//     }
+//   };
+// }
+
+// let ht = new HashTable();
+
+// ht.add('Theran', 9876543);
+// ht.add('Michael', 7654321);
+// ht.add('Ryan', 5643219);
+// ht.add('Paul', 8765432);
+// ht.add('Jeremy', 1234567)
+// ht.print();
+// console.log(ht.lookup('Jeremy'));
+// console.log(ht.lookup('Theran'));
+// console.log(ht.lookup('Paul'));
