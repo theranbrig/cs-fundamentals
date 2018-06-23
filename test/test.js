@@ -532,3 +532,46 @@ newsSearch.printDatabase();
 // };
 
 // console.log(hashNew('Theran Daniel Brigowatz'));
+
+let word = 'racecar';
+let word1 = 'bob';
+let word2 = 'amanaplanacanalpanama';
+let word3 = 'Theran';
+
+const checkPalindrome = word => {
+	let rWord = '';
+	let wordArray = [...word];
+	for (let i = 0; i < word.length; i++) {
+		rWord += wordArray.pop();
+	}
+	if (rWord === word) {
+		console.log(`${word} is a palindrome.`);
+	} else {
+		console.log(`${word} is not a palindrome`);
+	}
+};
+
+checkPalindrome(word);
+checkPalindrome(word1);
+checkPalindrome(word2);
+checkPalindrome(word3);
+
+//Reverse a word function
+function reverseWord(word) {
+	let reversedWord = '';
+	let wordArray = [];
+	// For the purposes of this exercise I used the push method with a for loop to show the understanding of a stack.  However instead of the first for loop, the ES6 spread operator could be used like in the next line to put the string into the array.
+	// let wordArray = [...word];
+	for (let i = 0; i < word.length; i++) {
+		wordArray.push(word[i]);
+	}
+	for (var i = 0; i < word.length; i++) {
+		reversedWord += wordArray.pop();
+	}
+	console.log(reversedWord);
+}
+
+//Test Cases
+reverseWord('word');
+reverseWord('Bloc!');
+reverseWord('pizza');
