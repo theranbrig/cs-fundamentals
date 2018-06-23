@@ -8,11 +8,11 @@ A stack is a last one in first one out data structure, while a queue is a first 
 
 -   What are the similarities between stacks and queues?
 
-Stacks and queues both order items sequentially, meaning that they keep track of an order of items. They are based upon when they are inputted into the data structure. These types are good for keeping track of the ordered data that needs to be sequentially arranged.
+Stacks and queues both order items sequentially, meaning that they keep track of the order of items. They are based upon when they are inputted into the data structure. These types are good for keeping track of the ordered data that needs to be sequentially arranged.
 
 -   Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
 
-The undo and redo items would best be served by a stack data structure. This is because they need access to the most recent operations. They item would be retrieved from the first position within the data structure. The push and pop function would be used to order the items within the data structure.
+The undo and redo items would best be served by a stack data structure. This is because they need access to the most recent operations. The item would be retrieved from the first position within the data structure. The push and pop function would be used to order the items within the data structure.
 
 ## Programming Questions
 
