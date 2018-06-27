@@ -575,3 +575,286 @@ function reverseWord(word) {
 reverseWord('word');
 reverseWord('Bloc!');
 reverseWord('pizza');
+
+// function LinkedList() {
+// 	let length = 0;
+// 	let head = null;
+
+// 	let Node = function(data) {
+// 		this.data = data;
+// 		this.next = null;
+// 	};
+
+// 	this.size = function() {
+// 		return length;
+// 	};
+
+// 	this.head = function() {
+// 		return head;
+// 	};
+
+// 	this.add = function(data) {
+// 		let newNode = new Node(data);
+// 		if (head === null) {
+// 			head = newNode;
+// 		} else {
+// 			let currentNode = head;
+// 			while (currentNode.next) {
+// 				currentNode = currentNode.next;
+// 			}
+// 			currentNode.next = newNode;
+// 		}
+// 		length++;
+// 	};
+
+// 	this.remove = function(data) {
+// 		let currentNode = head;
+// 		let previousNode;
+// 		if (currentNode.data === data) {
+// 			head = currentNode.next;
+// 		} else {
+// 			while (currentNode.data !== data) {
+// 				previousNode = currentNode;
+// 				currentNode = currentNode.next;
+// 			}
+// 			previousNode.next = currentNode.next;
+// 		}
+// 		length--;
+// 	};
+
+// 	this.isEmpty = function() {
+// 		return length === 0;
+// 	};
+
+// 	this.indexOf = function(data) {
+// 		let currentNode = head;
+// 		let index = -1;
+// 		while (currentNode) {
+// 			index++;
+// 			if (currentNode.data === data) {
+// 				return index;
+// 			}
+// 			return -1;
+// 		}
+// 	};
+
+// 	this.elementAt = function(index) {
+// 		let currentNode = head;
+// 		let count = 0;
+// 		while (count < index) {
+// 			count++;
+// 			currentNode = currentNode.next;
+// 		}
+// 		return currentNode.element;
+// 	};
+
+// 	this.addAt = function(index, element) {
+// 		let node = new Node(element);
+
+// 		let currentNode = head;
+// 		let previousNode;
+// 		let currentIndex = 0;
+
+// 		if (index > length) {
+// 			return false;
+// 		}
+
+// 		if (index === 0) {
+// 			node.next = currentNode;
+// 			head = node;
+// 		} else {
+// 			while (currentIndex < index) {
+// 				currentIndex++;
+// 				previousNode = currentNode;
+// 				currentNode = currentNode.next;
+// 			}
+// 			node.next = currentNode;
+// 			previousNode.next = node;
+// 		}
+// 		length++;
+// 	};
+
+// 	this.removeAt = function(index) {
+// 		let currentNode = head;
+// 		let previousNode;
+// 		let currentIndex = 0;
+
+// 		if (index < 0 || index >= length) {
+// 			return null;
+// 		}
+
+// 		if (index === 0) {
+// 			head = currentNode.next;
+// 		} else {
+// 			while (currentIndex < index) {
+// 				currentIndex++;
+// 				previousNode = currentNode;
+// 				currentNode = currentNode.next;
+// 			}
+// 			previousNode.next = currentNode.next;
+// 		}
+// 		length--;
+// 		return currentNode.element;
+// 	};
+
+// 	this.removeDuplicates = function() {
+// 		// Empty or a single element Linked List
+// 		if (!this.head || !this.head.next) {
+// 			console.log('No duplicates were found. Empty or a single element Linked List.');
+// 			return;
+// 		}
+
+// 		var current;
+// 		var next;
+// 		var nodes = {};
+
+// 		current = this.head;
+// 		next = current.next;
+// 		nodes[current.data] = true;
+
+// 		while (next) {
+// 			var data = next.data;
+// 			if (nodes[data]) {
+// 				current.next = next.next;
+// 			} else {
+// 				nodes[data] = true;
+// 				current = next;
+// 			}
+// 			next = next.next;
+// 		}
+// 	};
+// }
+
+// var list = new LinkedList();
+// list.add(5);
+// console.log(list);
+// console.log(list.size());
+
+function LinkedList() {
+	this.insertNode = function(value) {
+		let node = {
+			data: value,
+			next: null,
+		};
+
+		if (!this.head) {
+			this.head = node;
+		} else {
+			let current = this.head;
+			while (current.next) {
+				current = current.next;
+			}
+			current.next = node;
+		}
+	};
+
+	this.removeDuplicates = function() {
+		// Empty or a single element Linked List
+		if (!this.head || !this.head.next) {
+			console.log('No duplicates were found. Empty or a single element Linked List.');
+			return;
+		}
+
+		let currentNode;
+		let next;
+		let nodes = {};
+
+		currentNode = this.head;
+		next = currentNode.next;
+		nodes[currentNode.data] = true;
+
+		while (next) {
+			var data = next.data;
+			if (nodes[data]) {
+				currentNode.next = next.next;
+			} else {
+				nodes[data] = true;
+				currentNode = next;
+			}
+			next = next.next;
+		}
+	};
+
+	this.reverse = function(head) {
+		new_head = head;
+		old_head = head.next;
+		new_head.next = null; // Terminate cycle.
+		while (old_head) {
+			current = old_head;
+			old_head = old_head.next;
+			current.next = new_head;
+			new_head = current;
+		}
+		return new_head;
+	};
+}
+
+// Base case : No duplicates
+var L1 = new LinkedList();
+L1.insertNode(5);
+
+L1.removeDuplicates();
+console.log(L1);
+
+// Two nodes with duplicates
+var L2 = new LinkedList();
+L2.insertNode('kitten');
+L2.insertNode('kitten');
+
+L2.removeDuplicates();
+console.log(L2);
+
+// Two nodes without duplicates
+var L3 = new LinkedList();
+L3.insertNode(5);
+L3.insertNode(6);
+
+L3.removeDuplicates();
+console.log(L3);
+
+function reverseList(list) {
+	if (!list.head || !list.head.next) return list;
+
+	let nodes = [];
+	let current = list.head;
+	while (current) {
+		nodes.push(current);
+		current = current.next;
+	}
+
+	let reversedList = new LinkedList();
+
+	reversedList.head = nodes.pop();
+	current = reversedList.head;
+
+	let node = nodes.pop();
+
+	while (node) {
+		node.next = null;
+		current.next = node;
+		current = current.next;
+		node = nodes.pop();
+	}
+	return reversedList;
+}
+
+// Remove duplicates in List
+const animalList = new LinkedList();
+animalList.insertNode('kitten');
+animalList.insertNode('duck');
+animalList.insertNode('puppy');
+animalList.insertNode('hamster');
+animalList.insertNode('puppy');
+animalList.insertNode('hamster');
+animalList.insertNode('hamster');
+animalList.insertNode('duck');
+animalList.removeDuplicates();
+console.log(reverselist(animalList));
+
+// Remove multiple duplicates from middle
+var L5 = new LinkedList();
+var testData = [5, 6, 7, 5, 5, 8];
+testData.forEach(el => L5.insertNode(el));
+
+L5.removeDuplicates();
+console.log(L5);
