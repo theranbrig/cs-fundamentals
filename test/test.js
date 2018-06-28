@@ -823,12 +823,10 @@ function reverseList(list) {
 	}
 
 	let reversedList = new LinkedList();
-
 	reversedList.head = nodes.pop();
 	current = reversedList.head;
 
 	let node = nodes.pop();
-
 	while (node) {
 		node.next = null;
 		current.next = node;
@@ -849,7 +847,8 @@ animalList.insertNode('hamster');
 animalList.insertNode('hamster');
 animalList.insertNode('duck');
 animalList.removeDuplicates();
-console.log(reverselist(animalList));
+console.log(animalList); // Output is kitten, duck, puppy, hamster
+// console.log(reverseList(animalList));
 
 // Remove multiple duplicates from middle
 var L5 = new LinkedList();

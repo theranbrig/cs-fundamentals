@@ -9,7 +9,7 @@ Linked lists have the advantage that they are easy for dynamic data sets that ch
 
 * Come up with a real world example of a linked list.
 
-Linked lists would be useful in data like a phone's contact app.  It can grow and change easily and does not necessarily need a fast search function.  It could also be used for storing levels in a video game where one needs to be beat before passing onto the next.
+Linked lists would be useful in data like a phone's contact app.  It can grow and change easily and does not necessarily need a fast search function, but can be scrolled through relatively easily.
 
 
 ## Programming Questions
@@ -41,6 +41,8 @@ Example
 Input: a -> c -> d -> d -> a
 Output: a -> c -> d
 
+* For this problem each node in the linked list will be looped over starting at the head and comparing it to the other nodes that are in the list.  If it found to be a duplicate that item is removed from the linked list.
+
 ```js
 function LinkedList() {
 	this.insertNode = function(value) {
@@ -63,7 +65,7 @@ function LinkedList() {
 	this.removeDuplicates = function() {
 		// Empty or a single element Linked List
 		if (!this.head || !this.head.next) {
-			console.log('No duplicates were found. Empty or a single element Linked List.');
+			console.log('No duplicates.  Empty or single item list');
 			return;
 		}
 
@@ -76,7 +78,7 @@ function LinkedList() {
 		nodes[currentNode.data] = true;
 
 		while (next) {
-			var data = next.data;
+			let data = next.data;
 			if (nodes[data]) {
 				currentNode.next = next.next;
 			} else {
@@ -87,7 +89,6 @@ function LinkedList() {
 		}
 	};
 }
-
 
 // Remove duplicates in list test case
 const animalList = new LinkedList();
@@ -100,7 +101,8 @@ animalList.insertNode('hamster');
 animalList.insertNode('hamster');
 animalList.insertNode('duck');
 animalList.removeDuplicates();
-console.log(animalList);
+console.log(animalList); // Output is kitten, duck, puppy, hamster
+
 ```
 
 Given an unsorted singly linked list, reverse it.
@@ -108,8 +110,13 @@ Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
 
+* In order to solve this I want to create a temporary array that holds the nodes.  The nodes will be pushed to the array one by one.  Then in order to create a new list the items will be popped off from the temporary array and placed into the new reversed list.
+
+This works with the above animalList when added as the parameter for the reverseList function below.
+
 ```js
 function reverseList(list) {
+  //Check for empty or single item list
 	if (!list.head || !list.head.next) return list;
 
 	let nodes = [];
@@ -120,12 +127,10 @@ function reverseList(list) {
 	}
 
 	let reversedList = new LinkedList();
-
 	reversedList.head = nodes.pop();
-	current = reversedList.head;
+  current = reversedList.head;
 
 	let node = nodes.pop();
-
 	while (node) {
 		node.next = null;
 		current.next = node;
