@@ -920,20 +920,18 @@ function BinarySearchTree() {
 		return false;
 	};
 
-	this.lowestCommonAncestor = function(root, p, q) {
-		let count = 0;
-
-		while (true) {
-			let value = root.data;
-
-			if ((p.data >= value && value >= q.data) || (p.data <= value && value <= q.data)) {
-				return root;
-			} else if (p.data > value && q.data > value) {
-				root = root.right;
-			} else {
-				root = root.left;
-			}
+	this.commonAncestor = function(n1, n2) {
+		let node = this.root;
+		if (!node) return;
+		var val = node.data;
+		if (n1 < val && n2 < val) {
+			return this.commonAncestor(node.left, n1, n2);
 		}
+		if (n1 < val && n2 < val) {
+			return this.commonAncestor(node.right, n1, n2);
+		}
+		console.log('lowest common ancestor value: ', val);
+		return node;
 	};
 }
 
@@ -951,4 +949,4 @@ bst.addNode(13);
 
 console.log(bst);
 console.log(bst.contains(6));
-console.log(bst.leastCommonAncestor(1, 6));
+console.log(bst.commonAncestor(1, 6));

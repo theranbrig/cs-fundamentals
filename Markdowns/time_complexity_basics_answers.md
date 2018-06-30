@@ -1,0 +1,78 @@
+# Exercises
+
+> What is time complexity and what is its relation to algorithms?
+
+Time complexity is a representation of the time it takes to complete am algorithm. It represents the time as a function or graph, rather than in physical time.
+
+> What is runtime?
+
+Runtime is the actual runtime of the algorithm. Unlike time complexity, which is theoretical, the runtime is an actual measurement of how long the algorithm takes to run.
+
+> How is the runtime of an algorithm calculated?
+
+Time complexity is calculated by adding up the time based upon each operation in the algorithm. Then the constants are dropped with the remaining operation times used to calculate the overall runtime.
+
+> Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic growth rate not covered and place it in the correct spot in your list.
+
+-   Constant - O(1)
+-   Logarithmic - O(log n)
+-   Linear - O(n)
+-   Log Linear - O(n log n)
+-   Quadratic - O(n^2)
+-   Exponential - O(2^n)
+-   Factorial - O(n!)
+
+> Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
+
+Linear would be ordering hamburgers at a restaurant. For each burger that gets ordered the cost will increase by the same amount for each item.
+
+> Determine the time complexity of the following snippet of code. It is commonly known as a linear search.
+
+```js
+FUNCTION linearSearch(array, target)
+ FOR each number in the array
+   IF number = target THEN
+     RETURN true
+   END IF
+ END FOR
+ RETURN false
+END FUNCTION
+```
+
+-   This function would have a time complexity of O(n).
+
+> Determine the time complexity of the following snippet of code.
+
+```js
+FUNCTION foo(array)
+ FOR each number in the array
+   FOR each number in the array
+     print "Hello"
+   END FOR
+ END FOR
+END FUNCTION
+```
+
+-   This function would have a time complexity of O(n^2).
+
+> Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
+
+```js
+FUNCTION fibonacci(number)
+ IF number < 1 THEN
+   ERROR
+ ELSE IF number = 1 or 2 THEN
+   RETURN 1
+ ELSE
+   CALL fibonacci WITH number - 2 RETURNING twoBack
+   CALL fibonacci WITH number - 1 RETURNING oneBack
+   RETURN twoBack + oneBack
+ END IF
+END FUNCTION
+```
+
+-   This function would have a time complexity of O(2^n).
+
+> Out of the code snippets you just saw, which is the most time efficient?
+
+The first one is the most time efficient on average since it simply has a Linear(O(n)) time complexity.
