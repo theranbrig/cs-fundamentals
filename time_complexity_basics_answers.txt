@@ -1,15 +1,30 @@
 Exercises
-Create a file named time_complexity_basics_answers.txt and place your answers within it.
 
 What is time complexity and what is its relation to algorithms?
 
+* Time complexity is a representation of the time it takes to complete am algorithm. It represents the time as a function or graph, rather than in physical time.
+
 What is runtime?
+
+* Runtime is the actual runtime of the algorithm. Unlike time complexity, which is theoretical, the runtime is an actual measurement of how long the algorithm takes to run.
 
 How is the runtime of an algorithm calculated?
 
+* Time complexity is calculated by adding up the time based upon each operation in the algorithm. Then the constants are dropped with the remaining operation times used to calculate the overall runtime.
+
 Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic growth rate not covered and place it in the correct spot in your list.
 
+-   Constant - O(1)
+-   Logarithmic - O(log n)
+-   Linear - O(n)
+-   Log Linear - O(n log n)
+-   Quadratic - O(n^2)
+-   Exponential - O(2^n)
+-   Factorial - O(n!)
+
 Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
+
+* Linear would be ordering hamburgers at a restaurant. For each burger that gets ordered the cost will increase by the same amount for each item.
 
 Determine the time complexity of the following snippet of code. It is commonly known as a linear search.
 
@@ -21,9 +36,11 @@ FUNCTION linearSearch(array, target)
  END FOR
  RETURN false
 END FUNCTION
-Determine the time complexity of the following snippet of code.
 
-If you get stuck, read through the graphical representation section again.
+-   This function would have a time complexity of O(n).
+
+
+Determine the time complexity of the following snippet of code.
 
 FUNCTION foo(array)
  FOR each number in the array
@@ -32,6 +49,9 @@ FUNCTION foo(array)
    END FOR
  END FOR
 END FUNCTION
+
+-   This function would have a time complexity of O(n^2).
+
 Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
 
 FUNCTION fibonacci(number)
@@ -45,4 +65,10 @@ FUNCTION fibonacci(number)
    RETURN twoBack + oneBack
  END IF
 END FUNCTION
+
+-   This function would have a time complexity of O(2^n).
+
+
 Out of the code snippets you just saw, which is the most time efficient?
+
+* The first one is the most time efficient on average since it simply has a Linear(O(n)) time complexity.
