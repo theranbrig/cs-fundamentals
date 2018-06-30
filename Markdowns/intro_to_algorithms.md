@@ -1,0 +1,52 @@
+# Exercises
+
+Using proper pseudo-code, describe the following primitive algorithms:
+
+* Making coffee;
+
+```js
+FUNCTION makeCoffee()
+  GET coffee maker
+  GET coffee
+  ADD water to coffee maker
+  ADD coffee to coffee maker
+  PLUG IN coffee maker
+  TURN ON coffee maker
+END FUNCTION
+```
+
+* Washing dishes;
+
+```js
+FUNCTION washDishes()
+  ADD hot water to sink
+  GET sponge and soap
+  ADD soap to sponge
+  RUB dirty dish with sponge
+  RINSE with cool water
+END FUNCTION
+```
+
+* A choice of your own.
+
+```js
+FUNCTION makeDinner(salmon, potatoes, salad)
+  GET ingredients from fridge
+  CHOP potatoes
+  BOIL potatoes
+  GRILL salmon
+  PREPARE salad
+  PUT all on plate
+  EAT
+END FUNCTION
+```
+
+>As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+* Facebook has used algorithms to link friends and show information that we are interested in (though recently with some concern.)
+* Reddit's algorithms for front page and breaking news has allowed people to share information around the globe.
+* Governments around the world use algorithms to make traffic move smoothly.  All of the traffic light are on huge systems that link up and connect to make everything work together.
+
+>Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An efficient algorithm should balance time with solving the problem completely depending on case.  It has to find the right balance of precision vs speed.  An inefficient algorithm will not find the right balance between the two for a given problem.  Sometimes it is better to be thorough than fast, and vice versa.

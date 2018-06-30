@@ -1,6 +1,6 @@
-// Programming Questions
-
-// You may do the following problems in any language of your choice. Use the clean code principles taught in this section while writing the code.
+// ────────────────────────────────────────────────────────────────────────────────
+// INTRO DATA STRUCTURES PRACTICE
+// ────────────────────────────────────────────────────────────────────────────────
 
 // Square Given an array of integers, find out whether the sum of the integers is a perfect square. If it is a perfect square, return the square root, otherwise return the sum.
 
@@ -268,7 +268,9 @@ console.log(findAnagram('spar', 'rasp'));
 // tradersInventory.customerOrder(storeInventory, 'root beer', 3);
 // tradersInventory.checkProducts(storeInventory);
 
-// Exercises
+// ────────────────────────────────────────────────────────────────────────────────
+// HASH TABLE PRACTICE
+// ────────────────────────────────────────────────────────────────────────────────
 
 // Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 
@@ -533,6 +535,10 @@ newsSearch.printDatabase();
 
 // console.log(hashNew('Theran Daniel Brigowatz'));
 
+// ────────────────────────────────────────────────────────────────────────────────
+// STACKS AND QUEUES PRACTICE
+// ────────────────────────────────────────────────────────────────────────────────
+
 let word = 'racecar';
 let word1 = 'bob';
 let word2 = 'amanaplanacanalpanama';
@@ -575,6 +581,10 @@ function reverseWord(word) {
 reverseWord('word');
 reverseWord('Bloc!');
 reverseWord('pizza');
+
+// ────────────────────────────────────────────────────────────────────────────────
+// LINKED LIST PRACTICE
+// ────────────────────────────────────────────────────────────────────────────────
 
 // function LinkedList() {
 // 	let length = 0;
@@ -857,3 +867,88 @@ testData.forEach(el => L5.insertNode(el));
 
 L5.removeDuplicates();
 console.log(L5);
+
+// ────────────────────────────────────────────────────────────────────────────────
+// TREES AND GRAPH PRACTICE
+// ────────────────────────────────────────────────────────────────────────────────
+
+function Node(data) {
+	this.data = data;
+	this.left = null;
+	this.right = null;
+}
+
+function BinarySearchTree() {
+	this.root = null;
+
+	this.addNode = function(data) {
+		let root = this.root;
+		if (!root) {
+			this.root = new Node(data);
+		}
+
+		let currentNode = root;
+		let newNode = new Node(data);
+
+		while (currentNode) {
+			if (data < currentNode.data) {
+				if (!currentNode.left) {
+					currentNode.left = newNode;
+					break;
+				} else {
+					currentNode = currentNode.left;
+				}
+			} else {
+				if (!currentNode.right) {
+					currentNode.right = newNode;
+					break;
+				} else {
+					currentNode = currentNode.right;
+				}
+			}
+		}
+	};
+
+	this.contains = function(data) {
+		let current = this.root;
+		while (current) {
+			if (data === current.data) {
+				return true;
+			}
+			current = data < current.data ? current.left : current.right;
+		}
+		return false;
+	};
+
+	this.lowestCommonAncestor = function(root, p, q) {
+		let count = 0;
+
+		while (true) {
+			let value = root.data;
+
+			if ((p.data >= value && value >= q.data) || (p.data <= value && value <= q.data)) {
+				return root;
+			} else if (p.data > value && q.data > value) {
+				root = root.right;
+			} else {
+				root = root.left;
+			}
+		}
+	};
+}
+
+let bst = new BinarySearchTree();
+
+bst.addNode(8);
+bst.addNode(3);
+bst.addNode(1);
+bst.addNode(6);
+bst.addNode(4);
+bst.addNode(7);
+bst.addNode(10);
+bst.addNode(14);
+bst.addNode(13);
+
+console.log(bst);
+console.log(bst.contains(6));
+console.log(bst.leastCommonAncestor(1, 6));
