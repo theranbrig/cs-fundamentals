@@ -919,20 +919,38 @@ function BinarySearchTree() {
 		}
 		return false;
 	};
+}
 
-	this.commonAncestor = function(n1, n2) {
-		let node = this.root;
-		if (!node) return;
-		var val = node.data;
-		if (n1 < val && n2 < val) {
-			return this.commonAncestor(node.left, n1, n2);
+function commonAncestor(root, n1, n2) {
+	if (!root) return;
+	let val = root.data;
+	if (n1 < val && n2 < val) {
+		return commonAncestor(root.left, n1, n2);
+	}
+	if (n1 > val && n2 > val) {
+		return commonAncestor(root.right, n1, n2);
+	}
+	console.log('lowest common ancestor value: ', val);
+	return root;
+}
+
+function countDistance(root, data) {
+	let count = 0;
+	while (root) {
+		if (data === root.data) {
+			return count;
 		}
-		if (n1 < val && n2 < val) {
-			return this.commonAncestor(node.right, n1, n2);
-		}
-		console.log('lowest common ancestor value: ', val);
-		return node;
-	};
+		root = data < root.data ? root.left : root.right;
+		count++;
+	}
+	return false;
+}
+
+function findTotalDistance(mainNode, num1, num2) {
+	const rootNode = commonAncestor(mainNode, num1, num2);
+	const node1Distance = countDistance(rootNode, num1);
+	const node2Distance = countDistance(rootNode, num2);
+	return node1Distance + node2Distance;
 }
 
 let bst = new BinarySearchTree();
@@ -949,4 +967,5 @@ bst.addNode(13);
 
 console.log(bst);
 console.log(bst.contains(6));
-console.log(bst.commonAncestor(1, 6));
+console.log(findTotalDistance(bst.root, 4, 10));
+console.log(findTotalDistance(bst.root, 10, 8));

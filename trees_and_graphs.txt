@@ -1,0 +1,151 @@
+Exercises
+
+Short Answer
+
+-   What is a binary tree and what makes it unique to other trees?
+
+A binary tree is one that only has two nodes branching from the node above it. One is on the right and one is on the left. This can be useful when you want to search since you can create criteria for the search. In a binary search tree the left will follow a certain condition compared to right. You could set it so that the left is always a larger or smaller data value than the right, thus giving it more structure. This is the use of a binary search tree.
+
+-   What is a heuristic?
+
+A heuristic acts a as logical guess within an algorithm. Often times data sets can approach very large numbers to infinity when using large data sets. However, in order to mitigate these effects the algorithm will use heuristics that act as assumptions or rules within the data set. Although they make the algorithm less accurate, they do tend to increase efficiency.
+
+-   What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+Heuristics are often used in search algorithms. Especially for sites like Google or Yahoo. It would be impossible to search over every single web page on the internet. The search algorithms make assumptions and look for patterns in order to be more efficient.
+
+-   What is the difference between a depth-first search and a breadth-first search?
+
+Depth-first will go down the tree looking for the data. It will then move back up and down through the nodes until it finds the data. A breadth-first will look at each level down tree and scan that level from side-to-side. Once it has searched through that it will then search the next level down from side-to-side until it has found the data it is looking for.
+
+-   Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+*   Undirected means that the nodes do not have a start or end location. Rather there is just a connection between them. You could pass back and forth either way between the two nodes.
+
+*   A-cyclic means that there are no loops that are formed. Data may branch off of of node, but those branches do not connect back to each other.
+
+*   Unweighted means that that there is no cost of travel between the nodes. They are all equal in this case.
+
+-   What kind of graph is a binary search tree?
+
+A binary search tree is directed, a-cyclic, and unweighted graph
+
+Programming Questions
+
+> For the following questions, describe in words how you could solve the problem and then do so. Use the depiction of the Binary Search Tree to refer to the examples.
+
+> Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+> Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+-   This function works by using the structure of a binary search tree. Lower values get stored to left, and higher values the right. So it starts at the root and then goes left or right depending on if the node that you are looking for is bigger or smaller. It goes to the right if it is bigger, and to the left it is smaller than the current node that it is checking. It then returns true if the number is there, and false if it cannot be found.
+
+> Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+> Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+This requires two steps. First you must find the least common ancestor (LCA), or the node where the two data points you are checking, branch off from each other. Then once you have found the LCA, you simply need to count the distance from there to each of the nodes that you are checking and simply add the two distances together.
+
+-   The code below works for all of the questions given below. It has test cases to go along with it.
+
+
+function Node(data) {
+	this.data = data;
+	this.left = null;
+	this.right = null;
+}
+
+// General functions to add node and find if node exists in tree
+
+function BinarySearchTree() {
+	this.root = null;
+
+	this.addNode = function(data) {
+		let root = this.root;
+		if (!root) {
+			this.root = new Node(data);
+		}
+
+		let currentNode = root;
+		let newNode = new Node(data);
+
+		while (currentNode) {
+			if (data < currentNode.data) {
+				if (!currentNode.left) {
+					currentNode.left = newNode;
+					break;
+				} else {
+					currentNode = currentNode.left;
+				}
+			} else {
+				if (!currentNode.right) {
+					currentNode.right = newNode;
+					break;
+				} else {
+					currentNode = currentNode.right;
+				}
+			}
+		}
+	};
+
+	this.contains = function(data) {
+		let current = this.root;
+		while (current) {
+			if (data === current.data) {
+				return true;
+			}
+			current = data < current.data ? current.left : current.right;
+		}
+		return false;
+	};
+}
+
+// Find distance between two nodes functions
+
+function commonAncestor(root, n1, n2) {
+	if (!root) return;
+	let val = root.data;
+	if (n1 < val && n2 < val) {
+		return commonAncestor(root.left, n1, n2);
+	}
+	if (n1 > val && n2 > val) {
+		return commonAncestor(root.right, n1, n2);
+	}
+	console.log('lowest common ancestor value: ', val);
+	return root;
+}
+
+function countDistance(root, data) {
+	let count = 0;
+	while (root) {
+		if (data === root.data) {
+			return count;
+		}
+		root = data < root.data ? root.left : root.right;
+		count++;
+	}
+	return false;
+}
+
+function findTotalDistance(mainNode, num1, num2) {
+	const rootNode = commonAncestor(mainNode, num1, num2);
+	const node1Distance = countDistance(rootNode, num1);
+	const node2Distance = countDistance(rootNode, num2);
+	return node1Distance + node2Distance;
+}
+
+let bst = new BinarySearchTree();
+
+bst.addNode(8);
+bst.addNode(3);
+bst.addNode(1);
+bst.addNode(6);
+bst.addNode(4);
+bst.addNode(7);
+bst.addNode(10);
+bst.addNode(14);
+bst.addNode(13);
+
+console.log(bst);
+console.log(bst.contains(6));
+console.log(findTotalDistance(bst.root, 4, 10));
+console.log(findTotalDistance(bst.root, 10, 8));
+
