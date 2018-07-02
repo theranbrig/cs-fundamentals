@@ -148,4 +148,4 @@ console.log(bst);
 console.log(bst.contains(6));
 console.log(findTotalDistance(bst.root, 4, 10));
 console.log(findTotalDistance(bst.root, 10, 8));
-```
+

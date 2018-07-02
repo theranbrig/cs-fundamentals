@@ -969,3 +969,89 @@ console.log(bst);
 console.log(bst.contains(6));
 console.log(findTotalDistance(bst.root, 4, 10));
 console.log(findTotalDistance(bst.root, 10, 8));
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Recursion Practice
+// ────────────────────────────────────────────────────────────────────────────────
+
+// Factorial
+
+function factorial(num) {
+	if (num === 1) {
+		return 1;
+	}
+	return num * factorial(num - 1);
+}
+
+console.log(factorial(3));
+
+function reverseString(string) {
+	if (string.length <= 1) {
+		return string;
+	}
+	return reverseString(string.substr(1)) + string[0];
+}
+
+console.log(reverseString('Hello'));
+
+var fibonacci = function(n) {
+	if (n === 0) return 0;
+	if (n === 1) return 1;
+	return fibonacci(n - 1) + fibonacci(n - 2);
+};
+
+function maximum(array) {
+	nums = [...array];
+	if (nums.length == 1) {
+		return nums[0];
+	}
+	if (nums[0] < nums[1]) {
+		nums.splice(0, 1);
+	} else {
+		nums.splice(1, 1);
+	}
+	return maximum(nums);
+}
+
+console.log(maximum([0, 3, 4, 5, 2, 18, -1, 100, 99, 101, 1000, 4, 3]));
+
+function countItems(array) {
+	if (array.length === 0) {
+		return 0;
+	}
+	return countItems(array.slice(0, -1)) + 1;
+}
+
+console.log(countItems([0, 1, 2, 3, 4]));
+
+function checkHouses(array) {
+	let newArray = [...array];
+	if (array.length === 0) {
+		return 0;
+	}
+	console.log(`${array[0]} house visited.`);
+	newArray.shift();
+	console.log(`${newArray.length} houses left to visit.`);
+	return checkHouses(newArray);
+}
+
+checkHouses(['Jones', 'Farmer', 'Billings', 'Smith']);
+
+function reverseString(string) {
+	if (string.length <= 1) {
+		return string;
+	}
+	return reverseString(string.substr(1)) + string[0];
+}
+
+function isPalindrome(string) {
+	let reverse = reverseString(string);
+	console.log(reverse);
+	if (reverse.toLowerCase() === string.toLowerCase()) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+console.log(isPalindrome('Bob'));
