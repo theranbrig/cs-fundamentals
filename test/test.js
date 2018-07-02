@@ -1046,7 +1046,6 @@ function reverseString(string) {
 
 function isPalindrome(string) {
 	let reverse = reverseString(string);
-	console.log(reverse);
 	if (reverse.toLowerCase() === string.toLowerCase()) {
 		return true;
 	} else {
