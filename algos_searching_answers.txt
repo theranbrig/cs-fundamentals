@@ -1,0 +1,113 @@
+Exercises
+
+Short Answer
+
+> What is a real-life scenario that uses linear search?
+
+Searching for items in a grocery store aisle is linear search. You start at the beginning of the aisle and work your way down the end until you find the item that you are looking for.
+
+> What is a real-life scenario that uses binary search?
+
+Real life binary search is like searching through a phone book. You look at a page and then check if that item is before it alphabetically, or after it. You then adjust your search based upon that result. You will continue this pattern until you find the item you are looking for.
+
+> Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+This would take six iterations to find the value of G.
+
+> Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+This would take three iterations to find the value of G
+
+> Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+Since items are unsorted it would be more efficient to use linear search. Since it is unsorted the binary search function would not work. There is no low, mid, high in an unsorted collection. Therefore binary search has no data to work off of and increase efficiency. Therefore linear search is better to check through the items.
+
+> Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+In a sorted collection binary search would be better to use. In this case binary search has an average time complexity of O(log n) while a linear search has an average time complexity of O(n). Therefore on average it is more efficient. This is because with a sorted collection it can use the low, mid, high values to search more quickly on average through the collection. Though in certain cases where items are near the beginning of the collection, linear search will be faster, on average the binary search will yield faster results.
+
+Programming Assignment:
+
+> You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+For this problem I have used a linear search function to search for "Albatross" since it will come at the beginning of a sorted array. However in most cases a dictionary search would benefit more from binary search since it can search more quickly through an large sorted data set with a time complexity of O(log n). Both are found below.
+
+const animalDictionary = [
+	'albatross',
+	'alligator',
+	'bear',
+	'cat',
+	'chinchilla',
+	'dog',
+	'elephant',
+	'fox',
+	'goose',
+	'lion',
+	'moose',
+	'snake',
+	'tiger',
+	'unicorn',
+	'zebra',
+];
+
+function linearDictionarySearch(dictionary, word) {
+	for (var i = 0; i < dictionary.length; i++) {
+		if (dictionary[i] === word) {
+			return `${word} found at index ${[i]} of the dictionary`;
+			break;
+		}
+	}
+	return `${word} not found`;
+}
+
+console.log(linearDictionarySearch(animalDictionary, 'albatross'));
+
+function binaryDictionarySearch(dictionary, word) {
+	let index = null;
+	let low = 0;
+	let high = dictionary.length - 1;
+	let mid = Math.floor((low + high) / 2);
+	while (dictionary[mid] !== word && low <= high) {
+		if (dictionary[mid] > word) {
+			high = mid - 1;
+		} else {
+			low = mid + 1;
+		}
+		mid = Math.floor((low + high) / 2);
+	}
+	index = dictionary[mid] !== word ? -1 : mid;
+	return index !== -1 ? `${word} is found at index ${mid} of the dictionary` : `${word} not found`;
+}
+
+console.log(binaryDictionarySearch(animalDictionary, 'lion'));
+
+
+> You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+Since that is an unsorted data set the best search to use would be a linear search. It is set up as below.
+
+const bigTank = [
+	'guppy1',
+	'shark',
+	'blue whale',
+	'orca',
+	'lion fish',
+	'neon',
+	'clown fish',
+	'guppy2',
+	'white-spotted goldfish',
+	'dory',
+	'nemo',
+	'puffer fish',
+];
+
+function fishFinder(tank, name) {
+	for (var i = 0; i < tank.length; i++) {
+		if (tank[i] === name) {
+			return `${name} is found at index ${[i]} of the fish tank.`;
+		}
+	}
+	return `${name} not found.`;
+}
+
+console.log(fishFinder(bigTank, 'white-spotted goldfish'));

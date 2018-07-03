@@ -1054,3 +1054,105 @@ function isPalindrome(string) {
 }
 
 console.log(isPalindrome('Bob'));
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Search Algorithms Basics
+// ────────────────────────────────────────────────────────────────────────────────
+
+// Basic Binary Search
+
+const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
+function binarySearch(collection, value) {
+	let index = null;
+	let low = 0;
+	let high = collection.length - 1;
+	let mid = Math.floor((low + high) / 2);
+	while (collection[mid] !== value && low <= high) {
+		if (collection[mid] > value) {
+			high = mid - 1;
+		} else {
+			low = mid + 1;
+		}
+		mid = Math.floor((low + high) / 2);
+	}
+	index = collection[mid] !== value ? -1 : mid;
+	return index !== -1 ? `${value} is found at ${mid} index of the array` : `${value} not found`;
+}
+
+console.log(binarySearch(primes, 31));
+
+const animalDictionary = [
+	'albatross',
+	'alligator',
+	'bear',
+	'cat',
+	'chinchilla',
+	'dog',
+	'elephant',
+	'fox',
+	'goose',
+	'lion',
+	'moose',
+	'snake',
+	'tiger',
+	'unicorn',
+	'zebra',
+];
+
+function linearDictionarySearch(dictionary, word) {
+	for (var i = 0; i < dictionary.length; i++) {
+		if (dictionary[i] === word) {
+			return `${word} found at index ${[i]} of the dictionary`;
+			break;
+		}
+	}
+	return `${word} not found`;
+}
+
+console.log(linearDictionarySearch(animalDictionary, 'albatross'));
+
+function binaryDictionarySearch(dictionary, word) {
+	let index = null;
+	let low = 0;
+	let high = dictionary.length - 1;
+	let mid = Math.floor((low + high) / 2);
+	while (dictionary[mid] !== word && low <= high) {
+		if (dictionary[mid] > word) {
+			high = mid - 1;
+		} else {
+			low = mid + 1;
+		}
+		mid = Math.floor((low + high) / 2);
+	}
+	index = dictionary[mid] !== word ? -1 : mid;
+	return index !== -1 ? `${word} is found at index ${mid} of the dictionary` : `${word} not found`;
+}
+
+console.log(binaryDictionarySearch(animalDictionary, 'lion'));
+
+const bigTank = [
+	'guppy1',
+	'shark',
+	'blue whale',
+	'orca',
+	'lion fish',
+	'neon',
+	'clown fish',
+	'guppy2',
+	'white-spotted goldfish',
+	'dory',
+	'nemo',
+	'puffer fish',
+];
+
+function fishFinder(tank, name) {
+	for (var i = 0; i < tank.length; i++) {
+		if (tank[i] === name) {
+			return `${name} is found at index ${[i]} of the fish tank.`;
+		}
+	}
+	`${name} not found.`;
+}
+
+console.log(fishFinder(bigTank, 'white-spotted goldfish'));
