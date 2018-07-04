@@ -9,70 +9,70 @@
 // [1,1] returns 2 because 2 is not a perfect square.
 // The square root of 2 is approximately 1.414213562373095.
 
-function checkSquare(arr) {
-	let arrayTotal = arr.reduce((a, b) => a + b);
-	let squareRoot = Math.sqrt(arrayTotal);
-	if (squareRoot % 1 === 0) {
-		return squareRoot;
-	} else {
-		return arrayTotal;
-	}
-}
+// function checkSquare(arr) {
+// 	let arrayTotal = arr.reduce((a, b) => a + b);
+// 	let squareRoot = Math.sqrt(arrayTotal);
+// 	if (squareRoot % 1 === 0) {
+// 		return squareRoot;
+// 	} else {
+// 		return arrayTotal;
+// 	}
+// }
 
-squareArray1 = [10, 1, 4, 6, 1, 1, 2];
-squareArray2 = [1, 1];
-squareArray3 = [1, 2, 3, 4, 5];
+// squareArray1 = [10, 1, 4, 6, 1, 1, 2];
+// squareArray2 = [1, 1];
+// squareArray3 = [1, 2, 3, 4, 5];
 
-console.log(checkSquare(squareArray1)); // returns 5
-console.log(checkSquare(squareArray2)); // returns 2
-console.log(checkSquare(squareArray3)); // returns 15
+// console.log(checkSquare(squareArray1)); // returns 5
+// console.log(checkSquare(squareArray2)); // returns 2
+// console.log(checkSquare(squareArray3)); // returns 15
 
 // Duplicate Given an array of integers, find out whether the array contains any duplicate elements. The function should return true if any value appears at least twice in the array, and false if every element is distinct.
 
-function findDuplicates(array) {
-	const sortedArray = array.sort((a, b) => a - b);
-	console.log(sortedArray);
-	let results = [];
-	for (let i = 0; i < sortedArray.length; i++) {
-		if (sortedArray[i] === sortedArray[i + 1]) {
-			results.push(sortedArray[i]);
-		}
-	}
-	if (results.length > 0) {
-		return true;
-	} else {
-		return false;
-	}
-}
+// function findDuplicates(array) {
+// 	const sortedArray = array.sort((a, b) => a - b);
+// 	console.log(sortedArray);
+// 	let results = [];
+// 	for (let i = 0; i < sortedArray.length; i++) {
+// 		if (sortedArray[i] === sortedArray[i + 1]) {
+// 			results.push(sortedArray[i]);
+// 		}
+// 	}
+// 	if (results.length > 0) {
+// 		return true;
+// 	} else {
+// 		return false;
+// 	}
+// }
 
-console.log(findDuplicates([1, 1, 1]));
-console.log(findDuplicates([1, 1, 2]));
-console.log(findDuplicates([1, 2, 3, 6, 4, 2]));
-console.log(findDuplicates([1, 2, 100, 500, 1000, 3, 4]));
+// console.log(findDuplicates([1, 1, 1]));
+// console.log(findDuplicates([1, 1, 2]));
+// console.log(findDuplicates([1, 2, 3, 6, 4, 2]));
+// console.log(findDuplicates([1, 2, 100, 500, 1000, 3, 4]));
 
 // Extra Credit
 
 // Anagram An anagram is a word, phrase, or name formed by rearranging the letters of another word. For example, spar can be formed from rasp. Given two strings, stringOne and stringTwo, determine if stringOne is an anagram of stringTwo. Assume that the strings contain only lowercase letters and do not worry about case-sensitivity. Hint: Your first task will be to convert the strings to arrays.
 
-function findAnagram(string1, string2) {
-	let word1Array = [...string1];
-	let word2Array = [...string2];
-	let counter = 0;
-	word1Array.forEach(element => {
-		if (word2Array.indexOf(element) !== -1) {
-			counter++;
-		} else {
-			return `Not an anagram`, false;
-		}
-	});
-	if (counter === word1Array.length && counter === word2Array.length) {
-		return true;
-	} else {
-		return false;
-	}
-}
+// function findAnagram(string1, string2) {
+// 	let word1Array = [...string1];
+// 	let word2Array = [...string2];
+// 	let counter = 0;
+// 	word1Array.forEach(element => {
+// 		if (word2Array.indexOf(element) !== -1) {
+// 			counter++;
+// 		} else {
+// 			return `Not an anagram`, false;
+// 		}
+// 	});
+// 	if (counter === word1Array.length && counter === word2Array.length) {
+// 		return true;
+// 	} else {
+// 		return false;
+// 	}
+// }
 
-console.log(findAnagram('spar', 'rasp'));
+// console.log(findAnagram('spar', 'rasp'));
 
 // Hash Functions
 
@@ -274,242 +274,242 @@ console.log(findAnagram('spar', 'rasp'));
 
 // Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 
-const hash = (string, max) => {
-	let hash = 0;
-	for (let i = 0; i < string.length; i++) {
-		hash += string.charCodeAt(i);
-	}
-	return hash % max;
-};
+// const hash = (string, max) => {
+// 	let hash = 0;
+// 	for (let i = 0; i < string.length; i++) {
+// 		hash += string.charCodeAt(i);
+// 	}
+// 	return hash % max;
+// };
 
-const CustomerData = function() {
-	let database = [];
-	const databaseLimit = 10;
+// const CustomerData = function() {
+// 	let database = [];
+// 	const databaseLimit = 10;
 
-	this.printNames = function() {
-		console.log(database);
-	};
+// 	this.printNames = function() {
+// 		console.log(database);
+// 	};
 
-	this.addPerson = function(name, address, phoneNumber) {
-		let index = hash(phoneNumber, databaseLimit);
-		if (database[index] === undefined) {
-			database[index] = [
-				{
-					name,
-					address,
-					phoneNumber,
-				},
-			];
-		} else {
-			let inserted = false;
-			for (let i = 0; i < database[index].length; i++) {
-				if (database[index][i].phoneNumber === phoneNumber) {
-					inserted = true;
-				}
-			}
-			if (inserted === false) {
-				database[index].push({
-					name,
-					address,
-					phoneNumber,
-				});
-			}
-		}
-	};
+// 	this.addPerson = function(name, address, phoneNumber) {
+// 		let index = hash(phoneNumber, databaseLimit);
+// 		if (database[index] === undefined) {
+// 			database[index] = [
+// 				{
+// 					name,
+// 					address,
+// 					phoneNumber,
+// 				},
+// 			];
+// 		} else {
+// 			let inserted = false;
+// 			for (let i = 0; i < database[index].length; i++) {
+// 				if (database[index][i].phoneNumber === phoneNumber) {
+// 					inserted = true;
+// 				}
+// 			}
+// 			if (inserted === false) {
+// 				database[index].push({
+// 					name,
+// 					address,
+// 					phoneNumber,
+// 				});
+// 			}
+// 		}
+// 	};
 
-	this.findPerson = function(phoneNumber) {
-		let index = hash(phoneNumber, databaseLimit);
-		if (database[index] === undefined) {
-			console.log(`Number not found`);
-		} else {
-			for (let i = 0; i < database[index].length; i++) {
-				if (database[index][i].phoneNumber === phoneNumber) {
-					console.log(database[index][i]);
-				}
-			}
-		}
-	};
-};
+// 	this.findPerson = function(phoneNumber) {
+// 		let index = hash(phoneNumber, databaseLimit);
+// 		if (database[index] === undefined) {
+// 			console.log(`Number not found`);
+// 		} else {
+// 			for (let i = 0; i < database[index].length; i++) {
+// 				if (database[index][i].phoneNumber === phoneNumber) {
+// 					console.log(database[index][i]);
+// 				}
+// 			}
+// 		}
+// 	};
+// };
 
-let customerHash = new CustomerData();
+// let customerHash = new CustomerData();
 
-customerHash.addPerson('Bill', 'Main Street', '8675305');
-customerHash.addPerson('Theran', '1st Street', '8675309');
-customerHash.addPerson('James', '2nd Street', '7364825');
-customerHash.addPerson('Steve', '3rd Street', '3892503');
-customerHash.addPerson('Cooper', '4th Street', '2050329');
-customerHash.addPerson('Dennis', '7th Street', '1039253');
-customerHash.addPerson('Paul', '8th Street', '3049640');
-customerHash.addPerson('Ryan', '9th Street', '0304920');
-customerHash.addPerson('Jeremy', '10th Street', '0304922');
-customerHash.addPerson('Michael', '11th Street', '0304921');
-customerHash.addPerson('Brent', '12th Street', '3463640');
-customerHash.printNames();
-customerHash.findPerson('3463640');
-customerHash.findPerson('0304922');
+// customerHash.addPerson('Bill', 'Main Street', '8675305');
+// customerHash.addPerson('Theran', '1st Street', '8675309');
+// customerHash.addPerson('James', '2nd Street', '7364825');
+// customerHash.addPerson('Steve', '3rd Street', '3892503');
+// customerHash.addPerson('Cooper', '4th Street', '2050329');
+// customerHash.addPerson('Dennis', '7th Street', '1039253');
+// customerHash.addPerson('Paul', '8th Street', '3049640');
+// customerHash.addPerson('Ryan', '9th Street', '0304920');
+// customerHash.addPerson('Jeremy', '10th Street', '0304922');
+// customerHash.addPerson('Michael', '11th Street', '0304921');
+// customerHash.addPerson('Brent', '12th Street', '3463640');
+// customerHash.printNames();
+// customerHash.findPerson('3463640');
+// customerHash.findPerson('0304922');
 
 // Build a system that allows a store owner to track their store's inventory using a hash table for storage.
 
-const InventoryData = function() {
-	let inventory = [];
-	const inventoryMax = 10;
+// const InventoryData = function() {
+// 	let inventory = [];
+// 	const inventoryMax = 10;
 
-	this.checkInventory = function() {
-		console.log(inventory);
-	};
+// 	this.checkInventory = function() {
+// 		console.log(inventory);
+// 	};
 
-	this.addItems = function(product, quantity) {
-		const index = hash(product, inventoryMax);
-		if (inventory[index] === undefined) {
-			inventory[index] = [
-				{
-					product: product,
-					quantity: quantity,
-				},
-			];
-		} else {
-			let inserted = false;
-			for (let i = 0; i < inventory[index].length; i++) {
-				if (inventory[index][i].product === product) {
-					inserted = true;
-				}
-				if (inserted === false) {
-					inventory[index].push({
-						product: product,
-						quantity: quantity,
-					});
-				}
-			}
-		}
-		this.checkInventory(inventory);
-	};
+// 	this.addItems = function(product, quantity) {
+// 		const index = hash(product, inventoryMax);
+// 		if (inventory[index] === undefined) {
+// 			inventory[index] = [
+// 				{
+// 					product: product,
+// 					quantity: quantity,
+// 				},
+// 			];
+// 		} else {
+// 			let inserted = false;
+// 			for (let i = 0; i < inventory[index].length; i++) {
+// 				if (inventory[index][i].product === product) {
+// 					inserted = true;
+// 				}
+// 				if (inserted === false) {
+// 					inventory[index].push({
+// 						product: product,
+// 						quantity: quantity,
+// 					});
+// 				}
+// 			}
+// 		}
+// 		this.checkInventory(inventory);
+// 	};
 
-	this.customerPurchase = function(product) {
-		const index = hash(product, inventoryMax);
-		if (inventory[index] === undefined) {
-			console.log(`Product not found`);
-		} else {
-			for (let i = 0; i < inventory[index].length; i++) {
-				if (inventory[index][i].product === product) {
-					if (inventory[index][i].quantity > 0) {
-						inventory[index][i].quantity--;
-						console.log(inventory[index][i]);
-					} else {
-						console.log(`${inventory[index][i].product} is sold out.`);
-					}
-				}
-			}
-		}
-	};
+// 	this.customerPurchase = function(product) {
+// 		const index = hash(product, inventoryMax);
+// 		if (inventory[index] === undefined) {
+// 			console.log(`Product not found`);
+// 		} else {
+// 			for (let i = 0; i < inventory[index].length; i++) {
+// 				if (inventory[index][i].product === product) {
+// 					if (inventory[index][i].quantity > 0) {
+// 						inventory[index][i].quantity--;
+// 						console.log(inventory[index][i]);
+// 					} else {
+// 						console.log(`${inventory[index][i].product} is sold out.`);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	};
 
-	this.supplierOrder = function(product, orderQuantity) {
-		let index = hash(product, inventoryMax);
-		if (inventory[index] === undefined) {
-			console.log(`Product not found`);
-		} else {
-			for (let i = 0; i < inventory[index].length; i++) {
-				if (inventory[index][i].quantity <= 3) {
-					inventory[index][i].quantity += orderQuantity;
-					console.log(`Supplier order of ${inventory[index][i].product} made.`);
-				} else {
-					console.log(`You have enough ${inventory[index][i].product}.`);
-				}
-			}
-		}
-	};
-};
+// 	this.supplierOrder = function(product, orderQuantity) {
+// 		let index = hash(product, inventoryMax);
+// 		if (inventory[index] === undefined) {
+// 			console.log(`Product not found`);
+// 		} else {
+// 			for (let i = 0; i < inventory[index].length; i++) {
+// 				if (inventory[index][i].quantity <= 3) {
+// 					inventory[index][i].quantity += orderQuantity;
+// 					console.log(`Supplier order of ${inventory[index][i].product} made.`);
+// 				} else {
+// 					console.log(`You have enough ${inventory[index][i].product}.`);
+// 				}
+// 			}
+// 		}
+// 	};
+// };
 
-let storeInventory = new InventoryData();
+// let storeInventory = new InventoryData();
 
-storeInventory.addItems('milk', 3);
-storeInventory.addItems('eggs', 3);
-storeInventory.addItems('carrots', 2);
-storeInventory.addItems('chicken', 4);
-storeInventory.addItems('peppers', 3);
-storeInventory.addItems('onions', 6);
-storeInventory.checkInventory();
-storeInventory.customerPurchase('milk');
-storeInventory.customerPurchase('milk');
-storeInventory.customerPurchase('milk');
-storeInventory.customerPurchase('milk');
-storeInventory.customerPurchase('milk');
-storeInventory.supplierOrder('onions', 5);
-storeInventory.checkInventory();
+// storeInventory.addItems('milk', 3);
+// storeInventory.addItems('eggs', 3);
+// storeInventory.addItems('carrots', 2);
+// storeInventory.addItems('chicken', 4);
+// storeInventory.addItems('peppers', 3);
+// storeInventory.addItems('onions', 6);
+// storeInventory.checkInventory();
+// storeInventory.customerPurchase('milk');
+// storeInventory.customerPurchase('milk');
+// storeInventory.customerPurchase('milk');
+// storeInventory.customerPurchase('milk');
+// storeInventory.customerPurchase('milk');
+// storeInventory.supplierOrder('onions', 5);
+// storeInventory.checkInventory();
 
 // Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
 
-const newsHash = function() {
-	let newsData = [];
-	let databaseMax = 10;
+// const newsHash = function() {
+// 	let newsData = [];
+// 	let databaseMax = 10;
 
-	this.printDatabase = function(database) {
-		console.log(newsData);
-	};
+// 	this.printDatabase = function(database) {
+// 		console.log(newsData);
+// 	};
 
-	this.addArticle = function(articleTitle, publisher, publicationDate) {
-		let index = hash(articleTitle, databaseMax);
+// 	this.addArticle = function(articleTitle, publisher, publicationDate) {
+// 		let index = hash(articleTitle, databaseMax);
 
-		if (newsData[index] === undefined) {
-			newsData[index] = [
-				{
-					publisher: publisher,
-					articleTitle: articleTitle,
-					publicationDate: publicationDate,
-				},
-			];
-		} else {
-			let inserted = false;
-			for (let i = 0; i < newsData[index].length; i++) {
-				if (
-					newsData[index][i].articleTitle === articleTitle &&
-					newsData[index][i].publicationDate === publicationDate
-				) {
-					inserted = true;
-				}
-				if (inserted === false) {
-					newsData[index].push({
-						publisher: publisher,
-						articleTitle: articleTitle,
-						publicationDate: publicationDate,
-					});
-				}
-			}
-		}
-	};
+// 		if (newsData[index] === undefined) {
+// 			newsData[index] = [
+// 				{
+// 					publisher: publisher,
+// 					articleTitle: articleTitle,
+// 					publicationDate: publicationDate,
+// 				},
+// 			];
+// 		} else {
+// 			let inserted = false;
+// 			for (let i = 0; i < newsData[index].length; i++) {
+// 				if (
+// 					newsData[index][i].articleTitle === articleTitle &&
+// 					newsData[index][i].publicationDate === publicationDate
+// 				) {
+// 					inserted = true;
+// 				}
+// 				if (inserted === false) {
+// 					newsData[index].push({
+// 						publisher: publisher,
+// 						articleTitle: articleTitle,
+// 						publicationDate: publicationDate,
+// 					});
+// 				}
+// 			}
+// 		}
+// 	};
 
-	this.articleSearch = function(search, type) {
-		if (type === 'date') {
-			newsData.forEach(index => {
-				index.forEach(article => {
-					if (article.publicationDate === search) {
-						console.log(article);
-					}
-				});
-			});
-		}
-		if (type === 'publisher') {
-			newsData.forEach(index => {
-				index.forEach(article => {
-					if (article.publisher === search) {
-						console.log(article);
-					}
-				});
-			});
-		}
-	};
-};
+// 	this.articleSearch = function(search, type) {
+// 		if (type === 'date') {
+// 			newsData.forEach(index => {
+// 				index.forEach(article => {
+// 					if (article.publicationDate === search) {
+// 						console.log(article);
+// 					}
+// 				});
+// 			});
+// 		}
+// 		if (type === 'publisher') {
+// 			newsData.forEach(index => {
+// 				index.forEach(article => {
+// 					if (article.publisher === search) {
+// 						console.log(article);
+// 					}
+// 				});
+// 			});
+// 		}
+// 	};
+// };
 
-newsSearch = new newsHash();
+// newsSearch = new newsHash();
 
-newsSearch.addArticle('Stranger News', 'New York Times', '01-09-18');
-newsSearch.addArticle('Strangest article ever', 'New York Times', '01-03-18');
-newsSearch.addArticle('Bad News', 'Washington Post', '01-04-18');
-newsSearch.addArticle('Strange news', 'Washington Post', '01-05-18');
-newsSearch.addArticle('More weird news', 'Chicago Tribune', '01-05-18');
-newsSearch.articleSearch('01-05-18', 'date');
-newsSearch.articleSearch('New York Times', 'publisher');
+// newsSearch.addArticle('Stranger News', 'New York Times', '01-09-18');
+// newsSearch.addArticle('Strangest article ever', 'New York Times', '01-03-18');
+// newsSearch.addArticle('Bad News', 'Washington Post', '01-04-18');
+// newsSearch.addArticle('Strange news', 'Washington Post', '01-05-18');
+// newsSearch.addArticle('More weird news', 'Chicago Tribune', '01-05-18');
+// newsSearch.articleSearch('01-05-18', 'date');
+// newsSearch.articleSearch('New York Times', 'publisher');
 
-newsSearch.printDatabase();
+// newsSearch.printDatabase();
 
 // Simple but unreliable function to create string hash by Sergey.Shuchkin [t] gmail.com
 // alert( strhash('http://www.w3schools.com/js/default.asp') ); // 6mn6tf7st333r2q4o134o58888888888
@@ -539,48 +539,48 @@ newsSearch.printDatabase();
 // STACKS AND QUEUES PRACTICE
 // ────────────────────────────────────────────────────────────────────────────────
 
-let word = 'racecar';
-let word1 = 'bob';
-let word2 = 'amanaplanacanalpanama';
-let word3 = 'Theran';
+// let word = 'racecar';
+// let word1 = 'bob';
+// let word2 = 'amanaplanacanalpanama';
+// let word3 = 'Theran';
 
-const checkPalindrome = word => {
-	let rWord = '';
-	let wordArray = [...word];
-	for (let i = 0; i < word.length; i++) {
-		rWord += wordArray.pop();
-	}
-	if (rWord === word) {
-		console.log(`${word} is a palindrome.`);
-	} else {
-		console.log(`${word} is not a palindrome`);
-	}
-};
+// const checkPalindrome = word => {
+// 	let rWord = '';
+// 	let wordArray = [...word];
+// 	for (let i = 0; i < word.length; i++) {
+// 		rWord += wordArray.pop();
+// 	}
+// 	if (rWord === word) {
+// 		console.log(`${word} is a palindrome.`);
+// 	} else {
+// 		console.log(`${word} is not a palindrome`);
+// 	}
+// };
 
-checkPalindrome(word);
-checkPalindrome(word1);
-checkPalindrome(word2);
-checkPalindrome(word3);
+// checkPalindrome(word);
+// checkPalindrome(word1);
+// checkPalindrome(word2);
+// checkPalindrome(word3);
 
-//Reverse a word function
-function reverseWord(word) {
-	let reversedWord = '';
-	let wordArray = [];
-	// For the purposes of this exercise I used the push method with a for loop to show the understanding of a stack.  However instead of the first for loop, the ES6 spread operator could be used like in the next line to put the string into the array.
-	// let wordArray = [...word];
-	for (let i = 0; i < word.length; i++) {
-		wordArray.push(word[i]);
-	}
-	for (var i = 0; i < word.length; i++) {
-		reversedWord += wordArray.pop();
-	}
-	console.log(reversedWord);
-}
+// //Reverse a word function
+// function reverseWord(word) {
+// 	let reversedWord = '';
+// 	let wordArray = [];
+// 	// For the purposes of this exercise I used the push method with a for loop to show the understanding of a stack.  However instead of the first for loop, the ES6 spread operator could be used like in the next line to put the string into the array.
+// 	// let wordArray = [...word];
+// 	for (let i = 0; i < word.length; i++) {
+// 		wordArray.push(word[i]);
+// 	}
+// 	for (var i = 0; i < word.length; i++) {
+// 		reversedWord += wordArray.pop();
+// 	}
+// 	console.log(reversedWord);
+// }
 
-//Test Cases
-reverseWord('word');
-reverseWord('Bloc!');
-reverseWord('pizza');
+// //Test Cases
+// reverseWord('word');
+// reverseWord('Bloc!');
+// reverseWord('pizza');
 
 // ────────────────────────────────────────────────────────────────────────────────
 // LINKED LIST PRACTICE
@@ -740,334 +740,334 @@ reverseWord('pizza');
 // console.log(list);
 // console.log(list.size());
 
-function LinkedList() {
-	this.insertNode = function(value) {
-		let node = {
-			data: value,
-			next: null,
-		};
+// function LinkedList() {
+// 	this.insertNode = function(value) {
+// 		let node = {
+// 			data: value,
+// 			next: null,
+// 		};
 
-		if (!this.head) {
-			this.head = node;
-		} else {
-			let current = this.head;
-			while (current.next) {
-				current = current.next;
-			}
-			current.next = node;
-		}
-	};
+// 		if (!this.head) {
+// 			this.head = node;
+// 		} else {
+// 			let current = this.head;
+// 			while (current.next) {
+// 				current = current.next;
+// 			}
+// 			current.next = node;
+// 		}
+// 	};
 
-	this.removeDuplicates = function() {
-		// Empty or a single element Linked List
-		if (!this.head || !this.head.next) {
-			console.log('No duplicates were found. Empty or a single element Linked List.');
-			return;
-		}
+// 	this.removeDuplicates = function() {
+// 		// Empty or a single element Linked List
+// 		if (!this.head || !this.head.next) {
+// 			console.log('No duplicates were found. Empty or a single element Linked List.');
+// 			return;
+// 		}
 
-		let currentNode;
-		let next;
-		let nodes = {};
+// 		let currentNode;
+// 		let next;
+// 		let nodes = {};
 
-		currentNode = this.head;
-		next = currentNode.next;
-		nodes[currentNode.data] = true;
+// 		currentNode = this.head;
+// 		next = currentNode.next;
+// 		nodes[currentNode.data] = true;
 
-		while (next) {
-			var data = next.data;
-			if (nodes[data]) {
-				currentNode.next = next.next;
-			} else {
-				nodes[data] = true;
-				currentNode = next;
-			}
-			next = next.next;
-		}
-	};
+// 		while (next) {
+// 			var data = next.data;
+// 			if (nodes[data]) {
+// 				currentNode.next = next.next;
+// 			} else {
+// 				nodes[data] = true;
+// 				currentNode = next;
+// 			}
+// 			next = next.next;
+// 		}
+// 	};
 
-	this.reverse = function(head) {
-		new_head = head;
-		old_head = head.next;
-		new_head.next = null; // Terminate cycle.
-		while (old_head) {
-			current = old_head;
-			old_head = old_head.next;
-			current.next = new_head;
-			new_head = current;
-		}
-		return new_head;
-	};
-}
+// 	this.reverse = function(head) {
+// 		new_head = head;
+// 		old_head = head.next;
+// 		new_head.next = null; // Terminate cycle.
+// 		while (old_head) {
+// 			current = old_head;
+// 			old_head = old_head.next;
+// 			current.next = new_head;
+// 			new_head = current;
+// 		}
+// 		return new_head;
+// 	};
+// }
 
-// Base case : No duplicates
-var L1 = new LinkedList();
-L1.insertNode(5);
+// // Base case : No duplicates
+// var L1 = new LinkedList();
+// L1.insertNode(5);
 
-L1.removeDuplicates();
-console.log(L1);
+// L1.removeDuplicates();
+// console.log(L1);
 
-// Two nodes with duplicates
-var L2 = new LinkedList();
-L2.insertNode('kitten');
-L2.insertNode('kitten');
+// // Two nodes with duplicates
+// var L2 = new LinkedList();
+// L2.insertNode('kitten');
+// L2.insertNode('kitten');
 
-L2.removeDuplicates();
-console.log(L2);
+// L2.removeDuplicates();
+// console.log(L2);
 
-// Two nodes without duplicates
-var L3 = new LinkedList();
-L3.insertNode(5);
-L3.insertNode(6);
+// // Two nodes without duplicates
+// var L3 = new LinkedList();
+// L3.insertNode(5);
+// L3.insertNode(6);
 
-L3.removeDuplicates();
-console.log(L3);
+// L3.removeDuplicates();
+// console.log(L3);
 
-function reverseList(list) {
-	if (!list.head || !list.head.next) return list;
+// function reverseList(list) {
+// 	if (!list.head || !list.head.next) return list;
 
-	let nodes = [];
-	let current = list.head;
-	while (current) {
-		nodes.push(current);
-		current = current.next;
-	}
+// 	let nodes = [];
+// 	let current = list.head;
+// 	while (current) {
+// 		nodes.push(current);
+// 		current = current.next;
+// 	}
 
-	let reversedList = new LinkedList();
-	reversedList.head = nodes.pop();
-	current = reversedList.head;
+// 	let reversedList = new LinkedList();
+// 	reversedList.head = nodes.pop();
+// 	current = reversedList.head;
 
-	let node = nodes.pop();
-	while (node) {
-		node.next = null;
-		current.next = node;
-		current = current.next;
-		node = nodes.pop();
-	}
-	return reversedList;
-}
+// 	let node = nodes.pop();
+// 	while (node) {
+// 		node.next = null;
+// 		current.next = node;
+// 		current = current.next;
+// 		node = nodes.pop();
+// 	}
+// 	return reversedList;
+// }
 
-// Remove duplicates in List
-const animalList = new LinkedList();
-animalList.insertNode('kitten');
-animalList.insertNode('duck');
-animalList.insertNode('puppy');
-animalList.insertNode('hamster');
-animalList.insertNode('puppy');
-animalList.insertNode('hamster');
-animalList.insertNode('hamster');
-animalList.insertNode('duck');
-animalList.removeDuplicates();
-console.log(animalList); // Output is kitten, duck, puppy, hamster
-// console.log(reverseList(animalList));
+// // Remove duplicates in List
+// const animalList = new LinkedList();
+// animalList.insertNode('kitten');
+// animalList.insertNode('duck');
+// animalList.insertNode('puppy');
+// animalList.insertNode('hamster');
+// animalList.insertNode('puppy');
+// animalList.insertNode('hamster');
+// animalList.insertNode('hamster');
+// animalList.insertNode('duck');
+// animalList.removeDuplicates();
+// console.log(animalList); // Output is kitten, duck, puppy, hamster
+// // console.log(reverseList(animalList));
 
-// Remove multiple duplicates from middle
-var L5 = new LinkedList();
-var testData = [5, 6, 7, 5, 5, 8];
-testData.forEach(el => L5.insertNode(el));
+// // Remove multiple duplicates from middle
+// var L5 = new LinkedList();
+// var testData = [5, 6, 7, 5, 5, 8];
+// testData.forEach(el => L5.insertNode(el));
 
-L5.removeDuplicates();
-console.log(L5);
+// L5.removeDuplicates();
+// console.log(L5);
 
 // ────────────────────────────────────────────────────────────────────────────────
 // TREES AND GRAPH PRACTICE
 // ────────────────────────────────────────────────────────────────────────────────
 
-function Node(data) {
-	this.data = data;
-	this.left = null;
-	this.right = null;
-}
+// function Node(data) {
+// 	this.data = data;
+// 	this.left = null;
+// 	this.right = null;
+// }
 
-function BinarySearchTree() {
-	this.root = null;
+// function BinarySearchTree() {
+// 	this.root = null;
 
-	this.addNode = function(data) {
-		let root = this.root;
-		if (!root) {
-			this.root = new Node(data);
-		}
+// 	this.addNode = function(data) {
+// 		let root = this.root;
+// 		if (!root) {
+// 			this.root = new Node(data);
+// 		}
 
-		let currentNode = root;
-		let newNode = new Node(data);
+// 		let currentNode = root;
+// 		let newNode = new Node(data);
 
-		while (currentNode) {
-			if (data < currentNode.data) {
-				if (!currentNode.left) {
-					currentNode.left = newNode;
-					break;
-				} else {
-					currentNode = currentNode.left;
-				}
-			} else {
-				if (!currentNode.right) {
-					currentNode.right = newNode;
-					break;
-				} else {
-					currentNode = currentNode.right;
-				}
-			}
-		}
-	};
+// 		while (currentNode) {
+// 			if (data < currentNode.data) {
+// 				if (!currentNode.left) {
+// 					currentNode.left = newNode;
+// 					break;
+// 				} else {
+// 					currentNode = currentNode.left;
+// 				}
+// 			} else {
+// 				if (!currentNode.right) {
+// 					currentNode.right = newNode;
+// 					break;
+// 				} else {
+// 					currentNode = currentNode.right;
+// 				}
+// 			}
+// 		}
+// 	};
 
-	this.contains = function(data) {
-		let current = this.root;
-		while (current) {
-			if (data === current.data) {
-				return true;
-			}
-			current = data < current.data ? current.left : current.right;
-		}
-		return false;
-	};
-}
+// 	this.contains = function(data) {
+// 		let current = this.root;
+// 		while (current) {
+// 			if (data === current.data) {
+// 				return true;
+// 			}
+// 			current = data < current.data ? current.left : current.right;
+// 		}
+// 		return false;
+// 	};
+// }
 
-function commonAncestor(root, n1, n2) {
-	if (!root) return;
-	let val = root.data;
-	if (n1 < val && n2 < val) {
-		return commonAncestor(root.left, n1, n2);
-	}
-	if (n1 > val && n2 > val) {
-		return commonAncestor(root.right, n1, n2);
-	}
-	console.log('lowest common ancestor value: ', val);
-	return root;
-}
+// function commonAncestor(root, n1, n2) {
+// 	if (!root) return;
+// 	let val = root.data;
+// 	if (n1 < val && n2 < val) {
+// 		return commonAncestor(root.left, n1, n2);
+// 	}
+// 	if (n1 > val && n2 > val) {
+// 		return commonAncestor(root.right, n1, n2);
+// 	}
+// 	console.log('lowest common ancestor value: ', val);
+// 	return root;
+// }
 
-function countDistance(root, data) {
-	let count = 0;
-	while (root) {
-		if (data === root.data) {
-			return count;
-		}
-		root = data < root.data ? root.left : root.right;
-		count++;
-	}
-	return false;
-}
+// function countDistance(root, data) {
+// 	let count = 0;
+// 	while (root) {
+// 		if (data === root.data) {
+// 			return count;
+// 		}
+// 		root = data < root.data ? root.left : root.right;
+// 		count++;
+// 	}
+// 	return false;
+// }
 
-function findTotalDistance(mainNode, num1, num2) {
-	const rootNode = commonAncestor(mainNode, num1, num2);
-	const node1Distance = countDistance(rootNode, num1);
-	const node2Distance = countDistance(rootNode, num2);
-	return node1Distance + node2Distance;
-}
+// function findTotalDistance(mainNode, num1, num2) {
+// 	const rootNode = commonAncestor(mainNode, num1, num2);
+// 	const node1Distance = countDistance(rootNode, num1);
+// 	const node2Distance = countDistance(rootNode, num2);
+// 	return node1Distance + node2Distance;
+// }
 
-let bst = new BinarySearchTree();
+// let bst = new BinarySearchTree();
 
-bst.addNode(8);
-bst.addNode(3);
-bst.addNode(1);
-bst.addNode(6);
-bst.addNode(4);
-bst.addNode(7);
-bst.addNode(10);
-bst.addNode(14);
-bst.addNode(13);
+// bst.addNode(8);
+// bst.addNode(3);
+// bst.addNode(1);
+// bst.addNode(6);
+// bst.addNode(4);
+// bst.addNode(7);
+// bst.addNode(10);
+// bst.addNode(14);
+// bst.addNode(13);
 
-console.log(bst);
-console.log(bst.contains(6));
-console.log(findTotalDistance(bst.root, 4, 10));
-console.log(findTotalDistance(bst.root, 10, 8));
+// console.log(bst);
+// console.log(bst.contains(6));
+// console.log(findTotalDistance(bst.root, 4, 10));
+// console.log(findTotalDistance(bst.root, 10, 8));
 
 // ────────────────────────────────────────────────────────────────────────────────
 // Recursion Practice
 // ────────────────────────────────────────────────────────────────────────────────
 
-// Factorial
+// // Factorial
 
-function factorial(num) {
-	if (num === 1) {
-		return 1;
-	}
-	return num * factorial(num - 1);
-}
+// function factorial(num) {
+// 	if (num === 1) {
+// 		return 1;
+// 	}
+// 	return num * factorial(num - 1);
+// }
 
-console.log(factorial(3));
+// console.log(factorial(3));
 
-function reverseString(string) {
-	if (string.length <= 1) {
-		return string;
-	}
-	return reverseString(string.substr(1)) + string[0];
-}
+// function reverseString(string) {
+// 	if (string.length <= 1) {
+// 		return string;
+// 	}
+// 	return reverseString(string.substr(1)) + string[0];
+// }
 
-console.log(reverseString('Hello'));
+// console.log(reverseString('Hello'));
 
-var fibonacci = function(n) {
-	if (n === 0) return 0;
-	if (n === 1) return 1;
-	return fibonacci(n - 1) + fibonacci(n - 2);
-};
+// var fibonacci = function(n) {
+// 	if (n === 0) return 0;
+// 	if (n === 1) return 1;
+// 	return fibonacci(n - 1) + fibonacci(n - 2);
+// };
 
-function maximum(array) {
-	nums = [...array];
-	if (nums.length == 1) {
-		return nums[0];
-	}
-	if (nums[0] < nums[1]) {
-		nums.splice(0, 1);
-	} else {
-		nums.splice(1, 1);
-	}
-	return maximum(nums);
-}
+// function maximum(array) {
+// 	nums = [...array];
+// 	if (nums.length == 1) {
+// 		return nums[0];
+// 	}
+// 	if (nums[0] < nums[1]) {
+// 		nums.splice(0, 1);
+// 	} else {
+// 		nums.splice(1, 1);
+// 	}
+// 	return maximum(nums);
+// }
 
-console.log(maximum([0, 3, 4, 5, 2, 18, -1, 100, 99, 101, 1000, 4, 3]));
+// console.log(maximum([0, 3, 4, 5, 2, 18, -1, 100, 99, 101, 1000, 4, 3]));
 
-function countItems(arr) {
-	if (arr.length === 0) {
-		return 0;
-	}
-	return countItems(arr.slice(0, -1)) + 1;
-}
+// function countItems(arr) {
+// 	if (arr.length === 0) {
+// 		return 0;
+// 	}
+// 	return countItems(arr.slice(0, -1)) + 1;
+// }
 
-function flattenArray (arr) {
-	let flatArr = [];
-	arr.forEach(value => {
-		if (Array.isArray(value)) {
-			flatArr = flatArr.concat(flattenArray(value));
-		} else {
-			flatArr.push(value);
-		}
-	});
-	return flatArr;
-};
+// function flattenArray (arr) {
+// 	let flatArr = [];
+// 	arr.forEach(value => {
+// 		if (Array.isArray(value)) {
+// 			flatArr = flatArr.concat(flattenArray(value));
+// 		} else {
+// 			flatArr.push(value);
+// 		}
+// 	});
+// 	return flatArr;
+// };
 
-let result = flattenArray([[0, 3, 4], [5, 2], 18, [-1, 100, 99, 101], 1000, 4, 3]);
-console.log(result);
-console.log(countItems(result));
+// let result = flattenArray([[0, 3, 4], [5, 2], 18, [-1, 100, 99, 101], 1000, 4, 3]);
+// console.log(result);
+// console.log(countItems(result));
 
-function checkHouses(array) {
-	let newArray = [...array];
-	if (array.length === 0) {
-		return 0;
-	}
-	console.log(`${array[0]} house visited.`);
-	newArray.shift();
-	console.log(`${newArray.length} houses left to visit.`);
-	return checkHouses(newArray);
-}
+// function checkHouses(array) {
+// 	let newArray = [...array];
+// 	if (array.length === 0) {
+// 		return 0;
+// 	}
+// 	console.log(`${array[0]} house visited.`);
+// 	newArray.shift();
+// 	console.log(`${newArray.length} houses left to visit.`);
+// 	return checkHouses(newArray);
+// }
 
-checkHouses(['Jones', 'Farmer', 'Billings', 'Smith']);
+// checkHouses(['Jones', 'Farmer', 'Billings', 'Smith']);
 
-function reverseString(string) {
-	if (string.length <= 1) {
-		return string;
-	}
-	return reverseString(string.substr(1)) + string[0];
-}
+// function reverseString(string) {
+// 	if (string.length <= 1) {
+// 		return string;
+// 	}
+// 	return reverseString(string.substr(1)) + string[0];
+// }
 
-function isPalindrome(string) {
-	let reverse = reverseString(string);
-	if (reverse.toLowerCase() === string.toLowerCase()) {
-		return true;
-	} else {
-		return false;
-	}
-}
+// function isPalindrome(string) {
+// 	let reverse = reverseString(string);
+// 	if (reverse.toLowerCase() === string.toLowerCase()) {
+// 		return true;
+// 	} else {
+// 		return false;
+// 	}
+// }
 
-console.log(isPalindrome('Bob'));
+// console.log(isPalindrome('Bob'));
 
 // ────────────────────────────────────────────────────────────────────────────────
 // Search Algorithms Basics
@@ -1075,98 +1075,224 @@ console.log(isPalindrome('Bob'));
 
 // Basic Binary Search
 
-const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+// const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
 
-function binarySearch(collection, value) {
-	let index = null;
-	let low = 0;
-	let high = collection.length - 1;
-	let mid = Math.floor((low + high) / 2);
-	while (collection[mid] !== value && low <= high) {
-		if (collection[mid] > value) {
-			high = mid - 1;
+// function binarySearch(collection, value) {
+// 	let index = null;
+// 	let low = 0;
+// 	let high = collection.length - 1;
+// 	let mid = Math.floor((low + high) / 2);
+// 	while (collection[mid] !== value && low <= high) {
+// 		if (collection[mid] > value) {
+// 			high = mid - 1;
+// 		} else {
+// 			low = mid + 1;
+// 		}
+// 		mid = Math.floor((low + high) / 2);
+// 	}
+// 	index = collection[mid] !== value ? -1 : mid;
+// 	return index !== -1 ? `${value} is found at ${mid} index of the array` : `${value} not found`;
+// }
+
+// console.log(binarySearch(primes, 31));
+
+// const animalDictionary = [
+// 	'albatross',
+// 	'alligator',
+// 	'bear',
+// 	'cat',
+// 	'chinchilla',
+// 	'dog',
+// 	'elephant',
+// 	'fox',
+// 	'goose',
+// 	'lion',
+// 	'moose',
+// 	'snake',
+// 	'tiger',
+// 	'unicorn',
+// 	'zebra',
+// ];
+
+// function linearDictionarySearch(dictionary, word) {
+// 	for (var i = 0; i < dictionary.length; i++) {
+// 		if (dictionary[i] === word) {
+// 			return `${word} found at index ${[i]} of the dictionary`;
+// 			break;
+// 		}
+// 	}
+// 	return `${word} not found`;
+// }
+
+// console.log(linearDictionarySearch(animalDictionary, 'albatross'));
+
+// function binaryDictionarySearch(dictionary, word) {
+// 	let index = null;
+// 	let low = 0;
+// 	let high = dictionary.length - 1;
+// 	let mid = Math.floor((low + high) / 2);
+// 	while (dictionary[mid] !== word && low <= high) {
+// 		if (dictionary[mid] > word) {
+// 			high = mid - 1;
+// 		} else {
+// 			low = mid + 1;
+// 		}
+// 		mid = Math.floor((low + high) / 2);
+// 	}
+// 	index = dictionary[mid] !== word ? -1 : mid;
+// 	return index !== -1 ? `${word} is found at index ${mid} of the dictionary` : `${word} not found`;
+// }
+
+// console.log(binaryDictionarySearch(animalDictionary, 'lion'));
+
+// const bigTank = [
+// 	'guppy1',
+// 	'shark',
+// 	'blue whale',
+// 	'orca',
+// 	'lion fish',
+// 	'neon',
+// 	'clown fish',
+// 	'guppy2',
+// 	'white-spotted goldfish',
+// 	'dory',
+// 	'nemo',
+// 	'puffer fish',
+// ];
+
+// function fishFinder(tank, name) {
+// 	for (var i = 0; i < tank.length; i++) {
+// 		if (tank[i] === name) {
+// 			return `${name} is found at index ${[i]} of the fish tank.`;
+// 		}
+// 	}
+// 	`${name} not found.`;
+// }
+
+// console.log(fishFinder(bigTank, 'white-spotted goldfish'));
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Sorting Algorithms Practice
+// ────────────────────────────────────────────────────────────────────────────────
+
+let array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Insertion Sort
+
+function insertionSort(array) {
+	for (let i = 0; i < array.length; i++) {
+		let tempArr = array[i];
+		let j = i - 1;
+		while (j >= 0 && array[j] > tempArr) {
+			array[j + 1] = array[j];
+			j--;
+		}
+		array[j + 1] = tempArr;
+	}
+	return array;
+}
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Selection Sort
+
+// Swap helper function
+
+function swap(array, i, j) {
+	let temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
+}
+
+function selectionSort(array) {
+	for (var i = 0; i < array.length; i++) {
+		let min = i;
+		for (var j = i + 1; j < array.length; j++) {
+			if (array[j] < array[min]) {
+				min = j;
+			}
+		}
+		if (i !== min) {
+			swap(array, i, min);
+		}
+	}
+	return array;
+}
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Bubble Sort
+
+// Uses Swap Helper
+
+function bubbleSort(array) {
+	let swapped;
+	do {
+		swapped = false;
+		for (var i = 0; i < array.length; i++) {
+			if (array[i] && array[i + 1] && array[i] > array[i + 1]) {
+				swap(array, i, i + 1);
+				swapped = true;
+			}
+		}
+	} while (swapped);
+	return array;
+}
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Merge Sort
+
+function mergeSortTopDown(array) {
+	if (array.length < 2) {
+		return array;
+	}
+
+	let middle = Math.floor(array.length / 2);
+	let left = array.slice(0, middle);
+	let right = array.slice(middle);
+
+	return mergeTopDown(mergeSortTopDown(left), mergeSortTopDown(right));
+}
+function mergeTopDown(left, right) {
+	let array = [];
+
+	while (left.length && right.length) {
+		if (left[0] < right[0]) {
+			array.push(left.shift());
 		} else {
-			low = mid + 1;
-		}
-		mid = Math.floor((low + high) / 2);
-	}
-	index = collection[mid] !== value ? -1 : mid;
-	return index !== -1 ? `${value} is found at ${mid} index of the array` : `${value} not found`;
-}
-
-console.log(binarySearch(primes, 31));
-
-const animalDictionary = [
-	'albatross',
-	'alligator',
-	'bear',
-	'cat',
-	'chinchilla',
-	'dog',
-	'elephant',
-	'fox',
-	'goose',
-	'lion',
-	'moose',
-	'snake',
-	'tiger',
-	'unicorn',
-	'zebra',
-];
-
-function linearDictionarySearch(dictionary, word) {
-	for (var i = 0; i < dictionary.length; i++) {
-		if (dictionary[i] === word) {
-			return `${word} found at index ${[i]} of the dictionary`;
-			break;
+			array.push(right.shift());
 		}
 	}
-	return `${word} not found`;
+	return array.concat(left.slice()).concat(right.slice());
 }
 
-console.log(linearDictionarySearch(animalDictionary, 'albatross'));
+var array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
 
-function binaryDictionarySearch(dictionary, word) {
-	let index = null;
-	let low = 0;
-	let high = dictionary.length - 1;
-	let mid = Math.floor((low + high) / 2);
-	while (dictionary[mid] !== word && low <= high) {
-		if (dictionary[mid] > word) {
-			high = mid - 1;
+// ────────────────────────────────────────────────────────────────────────────────
+// Quick Sort
+
+// basic implementation (pivot is the first element of the array)
+function quicksortBasic(array) {
+	if (array.length < 2) {
+		return array;
+	}
+
+	let pivot = array[0];
+	let lesser = [];
+	let greater = [];
+
+	for (var i = 1; i < array.length; i++) {
+		if (array[i] < pivot) {
+			lesser.push(array[i]);
 		} else {
-			low = mid + 1;
-		}
-		mid = Math.floor((low + high) / 2);
-	}
-	index = dictionary[mid] !== word ? -1 : mid;
-	return index !== -1 ? `${word} is found at index ${mid} of the dictionary` : `${word} not found`;
-}
-
-console.log(binaryDictionarySearch(animalDictionary, 'lion'));
-
-const bigTank = [
-	'guppy1',
-	'shark',
-	'blue whale',
-	'orca',
-	'lion fish',
-	'neon',
-	'clown fish',
-	'guppy2',
-	'white-spotted goldfish',
-	'dory',
-	'nemo',
-	'puffer fish',
-];
-
-function fishFinder(tank, name) {
-	for (var i = 0; i < tank.length; i++) {
-		if (tank[i] === name) {
-			return `${name} is found at index ${[i]} of the fish tank.`;
+			greater.push(array[i]);
 		}
 	}
-	`${name} not found.`;
+
+	return quicksortBasic(lesser).concat(pivot, quicksortBasic(greater));
 }
 
-console.log(fishFinder(bigTank, 'white-spotted goldfish'));
+console.log(insertionSort(array));
+console.log(selectionSort(array));
+console.log(bubbleSort(array.slice()));
+console.log(mergeSortTopDown(array.slice()));
+console.log(quicksortBasic(array.slice()))
