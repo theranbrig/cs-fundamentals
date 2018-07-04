@@ -20,14 +20,30 @@ The similarities in all of these is that they contain base cases that lead to th
 
 -   Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
 
-function countItems(array) {
-	if (array.length === 0) {
+For this both the flattenArray function and the countItems function use recursion.  Although it is not necessary in functional programming for the count items to be recursive.  For the purposes of this assignment they both use recursion.  Test cases are below.
+
+function flattenArray (arr) {
+	let flatArr = [];
+	arr.forEach(value => {
+		if (Array.isArray(value)) {
+			flatArr = flatArr.concat(flattenArray(value));
+		} else {
+			flatArr.push(value);
+		}
+	});
+	return flatArr;
+};
+
+function countItems(arr) {
+	if (arr.length === 0) {
 		return 0;
 	}
-	return countItems(array.slice(0, -1)) + 1;
+	return countItems(arr.slice(0, -1)) + 1;
 }
 
-console.log(countItems([0, 1, 2, 3, 4]));
+let result = flattenArray([[0, 3, 4], [5, 2], 18, [-1, 100, 99, 101], 1000, 4, 3]);
+console.log(result);
+console.log(countItems(result));
 
 
 -   A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.

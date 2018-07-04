@@ -1015,14 +1015,28 @@ function maximum(array) {
 
 console.log(maximum([0, 3, 4, 5, 2, 18, -1, 100, 99, 101, 1000, 4, 3]));
 
-function countItems(array) {
-	if (array.length === 0) {
+function countItems(arr) {
+	if (arr.length === 0) {
 		return 0;
 	}
-	return countItems(array.slice(0, -1)) + 1;
+	return countItems(arr.slice(0, -1)) + 1;
 }
 
-console.log(countItems([0, 1, 2, 3, 4]));
+function flattenArray (arr) {
+	let flatArr = [];
+	arr.forEach(value => {
+		if (Array.isArray(value)) {
+			flatArr = flatArr.concat(flattenArray(value));
+		} else {
+			flatArr.push(value);
+		}
+	});
+	return flatArr;
+};
+
+let result = flattenArray([[0, 3, 4], [5, 2], 18, [-1, 100, 99, 101], 1000, 4, 3]);
+console.log(result);
+console.log(countItems(result));
 
 function checkHouses(array) {
 	let newArray = [...array];
