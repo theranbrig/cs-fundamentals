@@ -1229,7 +1229,7 @@ function bubbleSort(array) {
 	do {
 		swapped = false;
 		for (var i = 0; i < array.length; i++) {
-			if (array[i] && array[i + 1] && array[i] > array[i + 1]) {
+			if (array[i] > array[i + 1]) {
 				swap(array, i, i + 1);
 				swapped = true;
 			}
@@ -1265,8 +1265,6 @@ function mergeTopDown(left, right) {
 	return array.concat(left.slice()).concat(right.slice());
 }
 
-var array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
-
 // ────────────────────────────────────────────────────────────────────────────────
 // Quick Sort
 
@@ -1295,4 +1293,4 @@ console.log(insertionSort(array));
 console.log(selectionSort(array));
 console.log(bubbleSort(array.slice()));
 console.log(mergeSortTopDown(array.slice()));
-console.log(quicksortBasic(array.slice()))
+console.log(quicksortBasic(array.slice()));
