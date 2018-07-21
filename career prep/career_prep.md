@@ -14,9 +14,9 @@ Take a look at the sample phone screen scheduling request below. Write your resp
 
 Hello Jacob,
 
-Thank you very much for getting back to me about the opportunity for the Front-End Developer position at Vend.ly.  I am so excited for the opportunity to discuss joining your fantastic team.
+Thank you very much for getting back to me about the job position as Front-End Developer position at Vend.ly.  I am so excited for the opportunity to discuss joining your fantastic team and I think that I can be a great asset to your company.
 
-I have the following times available next week:
+I have the following times available for next week:
 
   - Monday: 2-5
   - Wednesday: 1-5
